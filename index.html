@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OralDysplasia AI — Pathologist Dashboard</title>
+    <!-- Google Fonts: Plus Jakarta Sans for premium modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome for clinical/system icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+    <!-- 1. Full-screen Loading Shield -->
+    <div id="loading-overlay" class="overlay hidden">
+        <div class="spinner-container">
+            <div class="spinner"></div>
+            <p id="loading-message">Verifying diagnostic credentials...</p>
+        </div>
+    </div>
+
+    <!-- 1.5 Public Marketing Landing Page -->
+    <div id="landing-container" class="landing-wrapper">
+        <!-- Navigation bar -->
+        <header class="landing-header">
+            <div class="landing-logo">
+                <i class="fa-solid fa-microscope text-indigo"></i>
+                <span>OralDysplasia <span class="badge-tag">AI</span></span>
+            </div>
+            <nav class="landing-nav">
+                <a href="#features">Features</a>
+                <a href="#pipeline">Pipeline</a>
+                <a href="#compliance">WHO Checklist</a>
+            </nav>
+            <div class="landing-auth-btn">
+                <button class="btn btn-outline" id="btn-show-login">Clinician Sign In</button>
+                <button class="btn btn-primary" id="btn-show-signup">Register License</button>
+            </div>
+            <button class="menu-toggle" id="landing-menu-toggle"><i class="fa-solid fa-bars"></i></button>
+        </header>
+
+        <!-- Mobile Nav Menu -->
+        <div class="mobile-nav hidden" id="mobile-nav-menu">
+            <a href="#features" class="mobile-nav-item">Features</a>
+            <a href="#pipeline" class="mobile-nav-item">Pipeline</a>
+            <a href="#compliance" class="mobile-nav-item">WHO Checklist</a>
+            <hr class="divider" style="opacity: 0.1; margin: 16px 0;">
+            <button class="btn btn-outline btn-block" id="btn-mobile-login">Clinician Sign In</button>
+            <button class="btn btn-primary btn-block mt-3" id="btn-mobile-signup">Register License</button>
+        </div>
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <span class="pill-badge"><i class="fa-solid fa-circle-check"></i> Clinical Grade Diagnostics</span>
+                <h1>Precision AI Support for Oral Epithelial Dysplasia</h1>
+                <p>An automated clinical framework combining Swin-Transformer deep learning, WHO cytological classification compliance, and secure cryptographic report sealing.</p>
+                <div class="hero-cta">
+                    <button class="btn btn-primary btn-large" id="btn-hero-launch">Launch Diagnostics Hub &nbsp;<i class="fa-solid fa-circle-arrow-right"></i></button>
+                    <a href="#features" class="btn btn-outline btn-large">Explore Features</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="glow-bg"></div>
+                <div class="mock-device-frame">
+                    <div class="mock-wsi-preview">
+                        <div class="mock-scanning-bar"></div>
+                        <div class="cell-node abnormal-1" style="top:30%; left:40%;">
+                            <span class="cell-tooltip">Severe Dysplasia (94%)</span>
+                        </div>
+                        <div class="cell-node abnormal-2" style="top:60%; left:70%;">
+                            <span class="cell-tooltip">Atypical Mitosis (88%)</span>
+                        </div>
+                        <div class="cell-node normal-1" style="top:20%; left:80%;">
+                            <span class="cell-tooltip">Normal (99%)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Grid Section -->
+        <section id="features" class="landing-section">
+            <div class="section-heading">
+                <h2>Clinical Core Features</h2>
+                <p>Designed for pathologists to improve Diagnostic Accuracy, Speed, and Compliance.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                    <h3>Interactive WSI Canvas</h3>
+                    <p>Pan, zoom, and focus on high-resolution tissue scan segments. Auto-zoom and snap into identified dysplastic patches.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-list-check"></i></div>
+                    <h3>WHO Guidelines Compliance</h3>
+                    <p>Fully mapped checklists for cytological and architectural changes to standardise diagnostic report validation.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-user-shield"></i></div>
+                    <h3>PII Cryptographic Security</h3>
+                    <p>AES-256 local database encryption preserves patient anonymity, sealed with ECDSA digital keys on report submission.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-file-export"></i></div>
+                    <h3>Interoperable Reports</h3>
+                    <p>Download clinical outputs in standard PDF format, HL7 FHIR Diagnostic JSON resources, or DICOM instances.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Diagnostic Pipeline Overview -->
+        <section id="pipeline" class="landing-section bg-gradient-dark">
+            <div class="section-heading">
+                <h2>End-to-End Diagnostic Pipeline</h2>
+                <p>How the deep learning model acts as a reliable double-check assistant.</p>
+            </div>
+            <div class="pipeline-steps">
+                <div class="step-card">
+                    <div class="step-number">01</div>
+                    <h4>WSI Upload</h4>
+                    <p>Pathologist drops virtual tissue scans (.SVS, .NDPI, .TIFF) directly into the secure portal.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">02</div>
+                    <h4>AI Grading Execution</h4>
+                    <p>High-resolution tiling processes image patches, classifying mild, moderate, and severe dysplasia regions.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">03</div>
+                    <h4>Interactive Verification</h4>
+                    <p>Clinician reviews AI detections, annotates cells, and signs with their regulatory credentials.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">04</div>
+                    <h4>Interoperable Export</h4>
+                    <p>Reports are saved directly into database and downloaded for EHR integration.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Compliance Section -->
+        <section id="compliance" class="landing-section">
+            <div class="compliance-wrapper">
+                <div class="compliance-text">
+                    <h2>WHO Classification of Head & Neck Tumours Compliance</h2>
+                    <p>Oral epithelial dysplasia grading requires rigorous assessment of cytological and architectural changes. Our framework includes direct mapping checkboxes to fulfill international classification compliance audits seamlessly.</p>
+                    <div class="compliance-badges">
+                        <span class="badge-item"><i class="fa-solid fa-check"></i> 12 WHO Criteria</span>
+                        <span class="badge-item"><i class="fa-solid fa-check"></i> ICD-10 Coding Mapping</span>
+                        <span class="badge-item"><i class="fa-solid fa-check"></i> Medical License Verification</span>
+                    </div>
+                </div>
+                <div class="compliance-visual">
+                    <div class="checklist-mock-card">
+                        <div class="check-item"><i class="fa-regular fa-square-check text-indigo"></i> <span>Basal cell hyperplasia</span></div>
+                        <div class="check-item"><i class="fa-regular fa-square-check text-indigo"></i> <span>Atypical mitotic figures</span></div>
+                        <div class="check-item"><i class="fa-regular fa-square-check text-indigo"></i> <span>Drop-shaped rete ridges</span></div>
+                        <div class="check-item"><i class="fa-regular fa-square-check text-indigo"></i> <span>Dyskeratosis (premature keratinization)</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="landing-footer">
+            <p>&copy; 2026 OralDysplasia AI. All rights reserved. Secure Pathological Diagnostic Software.</p>
+        </footer>
+    </div>
+
+    <!-- 2. Authentication Modal overlay -->
+    <div id="auth-modal" class="modal-overlay hidden">
+        <div class="auth-card">
+            <button class="btn-close-modal" id="btn-close-auth" title="Close"><i class="fa-solid fa-xmark"></i></button>
+            <!-- Header branding -->
+            <div class="auth-header">
+                <div class="icon-badge">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h2>OralDysplasia AI</h2>
+                <p>Precision Pathology Diagnostic Portal</p>
+            </div>
+
+            <!-- Login view -->
+            <div id="login-view" class="auth-view">
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="login-email">Clinical Email Address</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-envelope"></i>
+                            <input type="email" id="login-email" required placeholder="name@hospital.com">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Security Password</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="login-password" required placeholder="••••••••">
+                        </div>
+                    </div>
+                    <div id="login-error" class="error-msg hidden"></div>
+                    <button type="submit" class="btn btn-primary btn-block">Access Hub</button>
+                </form>
+                <div class="auth-footer">
+                    <p>New Clinician? <a href="#" id="go-to-signup">Register License Key</a></p>
+                    <p><a href="#" id="go-to-forgot-password">Forgot Password?</a></p>
+                </div>
+            </div>
+
+            <!-- Forgot Password view -->
+            <div id="forgot-view" class="auth-view hidden">
+                <form id="forgot-form">
+                    <div class="form-group">
+                        <label for="forgot-email">Registered Clinical Email</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-envelope"></i>
+                            <input type="email" id="forgot-email" required placeholder="name@hospital.com">
+                        </div>
+                    </div>
+                    <div id="forgot-error" class="error-msg hidden"></div>
+                    <div id="forgot-success" class="success-msg hidden"></div>
+                    <button type="submit" class="btn btn-primary btn-block">Reset Password</button>
+                </form>
+                <div class="auth-footer">
+                    <p>Remember password? <a href="#" id="forgot-go-to-login">Sign In</a></p>
+                </div>
+            </div>
+
+            <!-- Register view -->
+            <div id="signup-view" class="auth-view hidden">
+                <form id="signup-form">
+                    <div class="form-group">
+                        <label for="signup-name">Full Professional Name</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-user"></i>
+                            <input type="text" id="signup-name" required placeholder="Dr. Jane Doe">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">Clinical Email Address</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-envelope"></i>
+                            <input type="email" id="signup-email" required placeholder="name@hospital.com">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-license">Medical License ID Key</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-id-card"></i>
+                            <input type="text" id="signup-license" required placeholder="LIC-999-DENT">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-role">Designation / Role</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-stethoscope"></i>
+                            <select id="signup-role" required>
+                                <option value="Consultant Pathologist">Consultant Pathologist</option>
+                                <option value="Resident">Resident</option>
+                                <option value="Lab Tech">Lab Tech</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-institution">Institution / Hospital</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-building"></i>
+                            <input type="text" id="signup-institution" required placeholder="City Medical Center">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Account Security Password</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="signup-password" required placeholder="Min 6 characters">
+                        </div>
+                    </div>
+                    <div id="signup-error" class="error-msg hidden"></div>
+                    <button type="submit" class="btn btn-primary btn-block">Register License</button>
+                </form>
+                <div class="auth-footer">
+                    <p>Already Registered? <a href="#" id="go-to-login">Sign In</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 3. Primary App Hub Container -->
+    <div id="app-container" class="app-layout hidden">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="icon-badge">
+                    <i class="fa-solid fa-microscope"></i>
+                </div>
+                <h3>OralDysplasia</h3>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" data-target="dashboard-section">
+                    <i class="fa-solid fa-house"></i> Dashboard
+                </a>
+                <a href="#" class="nav-item" data-target="library-section">
+                    <i class="fa-solid fa-folder-open"></i> Biopsy Library
+                </a>
+                <a href="#" class="nav-item" data-target="upload-section">
+                    <i class="fa-solid fa-cloud-arrow-up"></i> Upload Slide
+                </a>
+                <a href="#" class="nav-item" data-target="profile-section">
+                    <i class="fa-solid fa-user-doctor"></i> Profile
+                </a>
+            </nav>
+
+            <div class="pathologist-footer">
+                <div class="avatar">
+                    <i class="fa-solid fa-user-md"></i>
+                </div>
+                <div class="user-info">
+                    <h4 id="sidebar-user-name">Dr. Pathologist</h4>
+                    <p id="sidebar-user-role">Consultant</p>
+                </div>
+                <button id="logout-btn" title="Logout & Lock Terminal"><i class="fa-solid fa-power-off"></i></button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="content-viewport">
+            
+            <!-- SECTION A: DASHBOARD -->
+            <section id="dashboard-section" class="app-section">
+                <!-- Welcome Banner -->
+                <div class="hero-banner">
+                    <h1 id="welcome-title">Welcome, Dr. Pathologist</h1>
+                    <p id="welcome-institution" class="text-upper">City Central Diagnostic Node</p>
+                    <p class="banner-desc">Oral Epithelial Dysplasia AI analysis engine is fully operational. Review cases, run tiles, and verify histopathological findings.</p>
+                </div>
+
+                <!-- KPI Widgets Grid -->
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-info">
+                            <span class="kpi-title">Total Active Slides</span>
+                            <h2 id="kpi-total">0</h2>
+                        </div>
+                        <div class="kpi-icon color-indigo"><i class="fa-solid fa-folder-closed"></i></div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-info">
+                            <span class="kpi-title">Pending Review</span>
+                            <h2 id="kpi-pending">0</h2>
+                        </div>
+                        <div class="kpi-icon color-amber"><i class="fa-regular fa-clock"></i></div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-info">
+                            <span class="kpi-title">Severe Detections</span>
+                            <h2 id="kpi-severe">0</h2>
+                        </div>
+                        <div class="kpi-icon color-red"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                    </div>
+                </div>
+
+                <!-- Recent Dossiers List -->
+                <div class="dashboard-panel">
+                    <div class="panel-header">
+                        <h3>Recent Biopsy Cases</h3>
+                    </div>
+                    <div class="slide-list" id="dashboard-slides-list">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION B: LIBRARY -->
+            <section id="library-section" class="app-section hidden">
+                <div class="section-title">
+                    <h2>Biopsy Case Records</h2>
+                    <p>Search and query slide datasets with local DB synchronization</p>
+                </div>
+
+                <!-- Filters panel -->
+                <div class="filter-panel-card">
+                    <div class="filter-group">
+                        <span class="filter-label">Filter by AI Grade Severity:</span>
+                        <div class="filter-chips" id="grade-filter-chips">
+                            <button class="chip active" data-grade="all">ALL</button>
+                            <button class="chip" data-grade="pending">PENDING</button>
+                            <button class="chip" data-grade="normal">NORMAL</button>
+                            <button class="chip" data-grade="mild">MILD</button>
+                            <button class="chip" data-grade="moderate">MODERATE</button>
+                            <button class="chip" data-grade="severe">SEVERE</button>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <span class="filter-label">Filter by Workflow Status:</span>
+                        <div class="filter-chips" id="status-filter-chips">
+                            <button class="chip active" data-status="all">ALL</button>
+                            <button class="chip" data-status="uploaded">UPLOADED</button>
+                            <button class="chip" data-status="analyzing">ANALYZING</button>
+                            <button class="chip" data-status="processed">PROCESSED</button>
+                            <button class="chip" data-status="reviewed">REVIEWED</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Library Grid Table -->
+                <div class="table-container">
+                    <table class="clinical-table">
+                        <thead>
+                            <tr>
+                                <th>Scan Filename</th>
+                                <th>Patient ID</th>
+                                <th>Patient Name</th>
+                                <th>Anatomical Site</th>
+                                <th>Overall Grade</th>
+                                <th>Confidence</th>
+                                <th>Workflow Status</th>
+                                <th style="text-align: center;">Share Report</th>
+                            </tr>
+                        </thead>
+                        <tbody id="library-table-body">
+                            <!-- Populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION C: UPLOAD -->
+            <section id="upload-section" class="app-section hidden">
+                <div class="section-title">
+                    <h2>Upload Biopsy Scan</h2>
+                    <p>Submit virtual slides (SVS/NDPI) for quantitative AI analysis</p>
+                </div>
+
+                <div class="form-layout-card">
+                    <form id="upload-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="upload-patient-id">Clinical Patient ID / Case ID</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-fingerprint"></i>
+                                    <input type="text" id="upload-patient-id" required placeholder="PT-888-CASE">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="upload-patient-name">Patient Full Name</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-regular fa-user"></i>
+                                    <input type="text" id="upload-patient-name" required placeholder="John Doe">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="upload-patient-age">Patient Age</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-calendar-day"></i>
+                                    <input type="number" id="upload-patient-age" required placeholder="e.g. 45" min="0" max="120">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="upload-patient-gender">Patient Gender</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-venus-mars"></i>
+                                    <select id="upload-patient-gender" required>
+                                        <option value="" disabled selected>Select Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                        <option value="Prefer not to say">Prefer not to say</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="upload-site">Biopsy Anatomical Site</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <select id="upload-site" required>
+                                    <option value="Lateral Tongue">Lateral Tongue</option>
+                                    <option value="Buccal Mucosa">Buccal Mucosa</option>
+                                    <option value="Floor of Mouth">Floor of Mouth</option>
+                                    <option value="Hard Palate">Hard Palate</option>
+                                    <option value="Lower Labial Mucosa">Lower Labial Mucosa</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="upload-notes">Clinical History & Context notes</label>
+                            <div class="input-wrapper flex-align-top">
+                                <i class="fa-solid fa-notes-medical mt-1"></i>
+                                <textarea id="upload-notes" rows="4" placeholder="Anamnesis description, lesion properties..."></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Web Drop Zone -->
+                        <div class="form-group">
+                            <label>Digital Scan File Attachment</label>
+                            <div class="drop-zone" id="file-drop-zone" style="cursor: pointer; position: relative;">
+                                <input type="file" id="file-input" accept=".svs,.ndpi,.tiff,.tif,.jpg,.jpeg,.png" style="display: none;" />
+                                <div class="drop-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                                <h4 id="selected-filename-label">Drag and drop a scan here or <span class="text-indigo" style="text-decoration: underline;">click to browse</span></h4>
+                                <p>Supports .svs, .ndpi, .tiff, .tif, .jpg, .jpeg, .png</p>
+                                <div class="mock-btn-row" style="position: relative; z-index: 10;">
+                                    <button type="button" class="btn btn-outline" id="pick-mock-a">Pick Mock Slide A (.SVS)</button>
+                                    <button type="button" class="btn btn-outline" id="pick-mock-b">Pick Mock Slide B (.NDPI)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="upload-error" class="error-msg hidden"></div>
+                        <div id="upload-progress-container" class="progress-container hidden mt-3">
+                            <div class="progress-bar-wrapper">
+                                <div id="upload-progress-bar" class="progress-bar" style="width: 0%;"></div>
+                            </div>
+                            <p id="upload-progress-status" class="progress-status-label">Uploading digital Whole Slide Image scan...</p>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="upload-submit-btn">Upload & Run Diagnostic Pipeline</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- SECTION D: PROFILE -->
+            <section id="profile-section" class="app-section hidden">
+                <div class="section-title">
+                    <h2>Profile & System Settings</h2>
+                    <p>Review pathologist registration keys and diagnostics parameters</p>
+                </div>
+
+                <div class="profile-grid">
+                    <!-- Pathologist details card -->
+                    <div class="card card-bordered">
+                        <div class="card-header">
+                            <h3><i class="fa-solid fa-id-card-clip"></i> Pathologist Credentials</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="profile-field">
+                                <span class="profile-label">Full Name</span>
+                                <h4 id="profile-name">Dr. Jane Doe</h4>
+                            </div>
+                            <div class="profile-field">
+                                <span class="profile-label">Medical License ID Key</span>
+                                <h4 id="profile-license">LIC-999-DENT</h4>
+                            </div>
+                            <div class="profile-field">
+                                <span class="profile-label">Clinical Email Address</span>
+                                <h4 id="profile-email">jane@hospital.com</h4>
+                            </div>
+                            <div class="profile-field">
+                                <span class="profile-label">Designation Role</span>
+                                <h4 id="profile-role">Consultant Pathologist</h4>
+                            </div>
+                            <div class="profile-field">
+                                <span class="profile-label">Affiliated Institution</span>
+                                <h4 id="profile-institution">City Medical Center</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Diagnostics engine status -->
+                    <div class="card card-bordered">
+                        <div class="card-header">
+                            <h3><i class="fa-solid fa-gears"></i> Diagnostics Engine Status</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="profile-field">
+                                <span class="profile-label">AI Model Architecture</span>
+                                <h4>Swin-T Hybrid v2.1.0</h4>
+                            </div>
+                            <div class="profile-field">
+                                <span class="profile-label">Secure HIPAA Storage</span>
+                                <h4>AES-256 (Cryptography.fernet)</h4>
+                            </div>
+                            <div class="profile-field">
+                                <span class="profile-label">Active Backend Host</span>
+                                <h4>FastAPI / Uvicorn Live (8000)</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION E: CASE DETAIL -->
+            <section id="detail-section" class="app-section hidden">
+                <div class="back-nav" id="btn-back-to-list">
+                    <i class="fa-solid fa-arrow-left"></i> Back to library
+                </div>
+
+                <div class="detail-header-card">
+                    <div class="detail-name">
+                        <h2 id="detail-filename">slide_case.svs</h2>
+                        <span class="badge" id="detail-status">PROCESSED</span>
+                    </div>
+                    <span id="detail-grade-chip" class="grade-chip grade-pending">PENDING DIAGNOSIS</span>
+                </div>
+
+                <div class="detail-grid">
+                    <!-- Patient Demographics -->
+                    <div class="card card-bordered">
+                        <div class="card-header">
+                            <h3><i class="fa-solid fa-hospital-user"></i> Patient Demographics</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="info-row">
+                                <span class="info-label">Anonymized Patient ID</span>
+                                <span class="info-value" id="detail-patient-id">-</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Patient Legal Name</span>
+                                <span class="info-value" id="detail-patient-name">-</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Patient Age</span>
+                                <span class="info-value" id="detail-patient-age">-</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Patient Gender</span>
+                                <span class="info-value" id="detail-patient-gender">-</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Biopsy Anatomical Site</span>
+                                <span class="info-value" id="detail-site">-</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Record Created Date</span>
+                                <span class="info-value" id="detail-created">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- WSI Properties -->
+                    <div class="card card-bordered">
+                        <div class="card-header">
+                            <h3><i class="fa-solid fa-image-portrait"></i> WSI Scan Properties</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="info-row">
+                                <span class="info-label">Scan Pixel Dimensions</span>
+                                <span class="info-value" id="detail-dimensions">2048 x 2048 pixels</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Digital Scan File Size</span>
+                                <span class="info-value" id="detail-size">0.0 MB</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clinical History -->
+                <div class="card card-bordered mt-4">
+                    <div class="card-header">
+                        <h3><i class="fa-solid fa-file-medical"></i> Clinical Anamnesis / History</h3>
+                    </div>
+                    <div class="card-body">
+                        <p id="detail-clinical-notes" class="clinical-paragraph">No clinical history attached to slide.</p>
+                    </div>
+                </div>
+
+                <!-- Slide Action Buttons -->
+                <div class="action-row mt-4">
+                    <button class="btn btn-primary" id="btn-initialize-analysis"><i class="fa-solid fa-play"></i> Initialize AI Diagnostic Runner</button>
+                    <button class="btn btn-primary hidden" id="btn-open-diagnostics"><i class="fa-solid fa-chart-line"></i> Open AI Diagnostics Canvas</button>
+                </div>
+
+                <!-- Slide Share Buttons -->
+                <div class="action-row mt-4 hidden" id="detail-share-row" style="align-items: center; gap: 12px; flex-wrap: wrap;">
+                    <span style="font-weight: 700; color: var(--text-muted); font-size: 11.5px; letter-spacing: 0.5px; text-transform: uppercase;">Share Case Report:</span>
+                    <a href="#" id="detail-share-whatsapp" class="btn btn-outline" style="color: #25D366; border-color: #25D366; display: inline-flex; align-items: center; gap: 6px; text-decoration: none; font-size: 13px; font-weight: 700; padding: 8px 16px; border-radius: var(--radius-sm);">
+                        <i class="fa-brands fa-whatsapp" style="font-size: 16px;"></i> WhatsApp
+                    </a>
+                    <a href="#" id="detail-share-email" class="btn btn-outline" style="color: #4F46E5; border-color: #4F46E5; display: inline-flex; align-items: center; gap: 6px; text-decoration: none; font-size: 13px; font-weight: 700; padding: 8px 16px; border-radius: var(--radius-sm);">
+                        <i class="fa-regular fa-envelope" style="font-size: 16px;"></i> Email
+                    </a>
+                    <a href="#" id="detail-share-pdf" class="btn btn-outline" style="color: #EF4444; border-color: #EF4444; display: inline-flex; align-items: center; gap: 6px; text-decoration: none; font-size: 13px; font-weight: 700; padding: 8px 16px; border-radius: var(--radius-sm);">
+                        <i class="fa-solid fa-file-pdf" style="font-size: 16px;"></i> PDF Report
+                    </a>
+                </div>
+            </section>
+
+            <!-- SECTION F: AI CANVAS & RESULTS -->
+            <section id="results-section" class="app-section hidden">
+                <div class="back-nav" id="btn-back-to-detail">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Case Dossier
+                </div>
+
+                <div class="canvas-viewport-grid">
+                    <!-- Left: Slide Canvas Viewer -->
+                    <div class="canvas-container-box">
+                        <div class="canvas-header">
+                            <h3>AI Diagnostic Canvas</h3>
+                            <div class="zoom-controls">
+                                <button id="btn-zoom-in" title="Zoom In"><i class="fa-solid fa-plus"></i></button>
+                                <button id="btn-zoom-reset" title="Reset"><i class="fa-solid fa-arrows-to-dot"></i></button>
+                                <button id="btn-zoom-out" title="Zoom Out"><i class="fa-solid fa-minus"></i></button>
+                            </div>
+                        </div>
+                        <div class="canvas-viewport" id="canvas-viewport">
+                            <canvas id="wsi-canvas" width="1024" height="1024"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Right: Review Sign-off form -->
+                    <div class="sign-off-panel">
+                        <!-- AI Metrics -->
+                        <div class="metrics-block">
+                            <div class="metric-col">
+                                <span class="metric-label">AI Classification Grade</span>
+                                <span id="canvas-grade-chip" class="grade-chip grade-pending">PENDING</span>
+                            </div>
+                            <div class="metric-col flex-end">
+                                <span class="metric-label">AI Confidence</span>
+                                <h3 id="canvas-confidence-val" class="text-indigo">0%</h3>
+                            </div>
+                        </div>
+
+                        <hr class="divider">
+
+                        <!-- Microscopic finding summary -->
+                        <div class="card card-bordered bg-slate-soft">
+                            <div class="finding-header">
+                                <h4>AI Microscopic Quantifications</h4>
+                            </div>
+                            <div class="finding-list" id="canvas-findings-breakdown">
+                                <!-- Populated dynamically -->
+                            </div>
+                        </div>
+
+                        <h3>Pathologist Verified Verdict</h3>
+
+                        <!-- Grade Selection dropdown -->
+                        <div class="form-group">
+                            <label for="canvas-final-grade">Final Grade Selection</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-ranking-star"></i>
+                                <select id="canvas-final-grade" required>
+                                    <option value="normal">NORMAL / BENIGN</option>
+                                    <option value="mild">MILD DYSPLASIA</option>
+                                    <option value="moderate">MODERATE DYSPLASIA</option>
+                                    <option value="severe">SEVERE DYSPLASIA</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- WHO checklist -->
+                        <div class="accordion-card">
+                            <div class="accordion-header" id="accordion-checklist-trigger">
+                                <span><i class="fa-solid fa-list-check"></i> WHO Histological Checklist</span>
+                                <i class="fa-solid fa-chevron-down" id="accordion-arrow"></i>
+                            </div>
+                            <div class="accordion-body hidden" id="accordion-checklist-body">
+                                <h5>Architectural Changes</h5>
+                                <div class="checkbox-row">
+                                    <input type="checkbox" id="who-arch-1" value="Irregular epithelial stratification">
+                                    <label for="who-arch-1">Irregular epithelial stratification</label>
+                                </div>
+                                <div class="checkbox-row">
+                                    <input type="checkbox" id="who-arch-2" value="Loss of polarity of basal cells">
+                                    <label for="who-arch-2">Loss of polarity of basal cells</label>
+                                </div>
+                                <div class="checkbox-row">
+                                    <input type="checkbox" id="who-arch-3" value="Drop-shaped rete ridges">
+                                    <label for="who-arch-3">Drop-shaped rete ridges</label>
+                                </div>
+                                <div class="checkbox-row">
+                                    <input type="checkbox" id="who-arch-4" value="Basal cell hyperplasia">
+                                    <label for="who-arch-4">Basal cell hyperplasia</label>
+                                </div>
+                                <div class="checkbox-row">
+                                    <input type="checkbox" id="who-arch-5" value="Dyskeratosis">
+                                    <label for="who-arch-5">Dyskeratosis (premature keratinization)</label>
+                                </div>
+                                <div class="checkbox-row">
+                                    <input type="checkbox" id="who-arch-6" value="Keratin pearls within rete ridges">
+                                    <label for="who-arch-6">Keratin pearls within rete ridges</label>
+                                </div>
+                                <div class="checkbox-row">
+                                    <input type="checkbox" id="who-arch-7" value="Loss of intercellular cohesion">
+                                    <label for="who-arch-7">Loss of intercellular cohesion</label>
+                                </div>
+
+                                <h5 class="mt-3">Cytological Changes</h5>
+                                <div class="checkbox-row">
+                                    <input type="checkbox" id="who-cyto-1" value="Abnormal variation in nuclear size/shape">
+                                    <label for="who-cyto-1">Abnormal variation in nuclear size/shape</label>
+                                </div>
+                                <div class="checkbox-row">
+                                    <input type="checkbox" id="who-cyto-2" value="Abnormal variation in cell size/shape">
+                                    <label for="who-cyto-2">Abnormal variation in cell size/shape</label>
+                                </div>
+                                <div class="checkbox-row">
+                                    <input type="checkbox" id="who-cyto-3" value="Hyperchromatic nuclei">
+                                    <label for="who-cyto-3">Hyperchromatic nuclei</label>
+                                </div>
+                                <div class="checkbox-row">
+                                    <input type="checkbox" id="who-cyto-4" value="Enlarged nucleoli">
+                                    <label for="who-cyto-4">Enlarged nucleoli</label>
+                                </div>
+                                <div class="checkbox-row">
+                                    <input type="checkbox" id="who-cyto-5" value="Increased / atypical mitotic figures">
+                                    <label for="who-cyto-5">Increased / atypical mitotic figures</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ICD-10 dropdown selection mapper -->
+                        <div class="form-group">
+                            <label for="canvas-icd-select">ICD-10 Diagnostic Code Mapping</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-code"></i>
+                                <select id="canvas-icd-select">
+                                    <option value="K13.21">K13.21 - Leukoplakia (Mild/Mod Dysplasia)</option>
+                                    <option value="K13.22">K13.22 - Erythroplakia (High Risk)</option>
+                                    <option value="D01.5">D01.5 - Carcinoma in situ of Oral Cavity (Severe)</option>
+                                    <option value="K13.29">K13.29 - Mucosal Dysplasia NOS</option>
+                                    <option value="C02.9">C02.9 - Squamous Cell Carcinoma of Tongue</option>
+                                    <option value="custom">-- Custom Diagnosis Code --</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group hidden" id="canvas-custom-icd-wrapper">
+                            <label for="canvas-icd-custom">Custom ICD-10 Code</label>
+                            <input type="text" id="canvas-icd-custom" class="form-input-box" value="K13.29">
+                        </div>
+
+                        <!-- Report exports dropdown buttons -->
+                        <div class="export-dropdown-block">
+                            <button class="btn btn-secondary btn-block" id="btn-export-dropdown">
+                                <i class="fa-solid fa-download"></i> Export Diagnostic Report &nbsp;<i class="fa-solid fa-caret-down"></i>
+                            </button>
+                            <div class="export-dropdown-menu hidden" id="export-dropdown-menu">
+                                <div class="menu-item" id="export-fhir"><i class="fa-regular fa-file-code"></i> FHIR JSON Resource</div>
+                                <div class="menu-item" id="export-dicom"><i class="fa-regular fa-id-badge"></i> DICOM SOP Instance</div>
+                                <div class="menu-item" id="export-pdf"><i class="fa-regular fa-file-pdf"></i> Clinical PDF Layout</div>
+                                <div class="menu-item" id="export-patient-pdf"><i class="fa-regular fa-envelope"></i> Share to Patient (PDF)</div>
+                                <div class="menu-item" id="export-whatsapp"><i class="fa-brands fa-whatsapp" style="color: #25D366;"></i> Share via WhatsApp</div>
+                                <div class="menu-item" id="export-email"><i class="fa-regular fa-envelope" style="color: #4F46E5;"></i> Share via Email</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="canvas-comments">Verification Comments</label>
+                            <textarea id="canvas-comments" rows="3" placeholder="Enter clinical assessment notes..."></textarea>
+                        </div>
+
+                        <!-- Cryptoseal Signature box -->
+                        <div class="card signature-block-card">
+                            <div class="sig-header">
+                                <i class="fa-solid fa-user-shield"></i>
+                                <span>Digital Cryptographic Sign-Off Seal</span>
+                            </div>
+                            <div class="sig-body">
+                                <p><strong>Signatory:</strong> <span id="sig-name">Dr. Jane Doe</span></p>
+                                <p><strong>Role:</strong> <span id="sig-role">Consultant Pathologist</span></p>
+                                <p><strong>License:</strong> <span id="sig-license">LIC-999-DENT</span></p>
+                                <p><strong>Institution:</strong> <span id="sig-institution">City Medical Center</span></p>
+                                <p class="hash-code" id="sig-hash">SHA256:ECDSA:PENDING_SEAL</p>
+                            </div>
+                        </div>
+
+                        <!-- Messages -->
+                        <div id="canvas-status-msg" class="success-msg hidden"></div>
+                        <div id="canvas-error-msg" class="error-msg hidden"></div>
+
+                        <button class="btn btn-primary btn-block" id="btn-submit-review"><i class="fa-solid fa-circle-check"></i> Sign & Verify Pathology Report</button>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Script references -->
+    <script src="app.js"></script>
+</body>
+</html>
