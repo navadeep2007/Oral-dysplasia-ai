@@ -1,1 +1,2 @@
 Index,Severity,Category,Endpoint,Method,Role Context,Description
+1,MEDIUM,Rate Limiting,/api/v1/auth/login,POST,anonymous,Sent 30 requests in 44.1s. Rate limited: False. Statuses: [500].

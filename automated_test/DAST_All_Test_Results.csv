@@ -1,97 +1,45 @@
 Index,Endpoint,Method,Role Context,Response Status,Expected Status,Is Finding?,Severity,Response Time (ms),Note
-1,/api/v1/slides/upload,POST,anonymous,401,401/403,NO,info,2038.8,No token sent. Got 401.
-2,/api/v1/slides/library,GET,anonymous,401,401/403,NO,info,2050.8,No token sent. Got 401.
-3,/api/v1/slides/1,GET,anonymous,401,401/403,NO,info,2076.4,No token sent. Got 401.
-4,/api/v1/slides/stats/dashboard,GET,anonymous,401,401/403,NO,info,2057.4,No token sent. Got 401.
-5,/api/v1/analysis/run,POST,anonymous,401,401/403,NO,info,2044.2,No token sent. Got 401.
-6,/api/v1/analysis/1/result,GET,anonymous,401,401/403,NO,info,2081.4,No token sent. Got 401.
-7,/api/v1/analysis/1/review,PUT,anonymous,401,401/403,NO,info,2044,No token sent. Got 401.
-8,/api/v1/reports/1/export,GET,anonymous,401,401/403,NO,info,2059.3,No token sent. Got 401.
-9,/api/v1/slides/upload,POST,anonymous(empty),401,401/403,NO,info,2081.2,Token type: empty. Got 401.
-10,/api/v1/slides/library,GET,anonymous(empty),401,401/403,NO,info,2063.3,Token type: empty. Got 401.
-11,/api/v1/slides/1,GET,anonymous(empty),401,401/403,NO,info,2059.9,Token type: empty. Got 401.
-12,/api/v1/slides/stats/dashboard,GET,anonymous(empty),401,401/403,NO,info,2046.7,Token type: empty. Got 401.
-13,/api/v1/analysis/run,POST,anonymous(empty),401,401/403,NO,info,2049.7,Token type: empty. Got 401.
-14,/api/v1/analysis/1/result,GET,anonymous(empty),401,401/403,NO,info,2029,Token type: empty. Got 401.
-15,/api/v1/analysis/1/review,PUT,anonymous(empty),401,401/403,NO,info,2029.7,Token type: empty. Got 401.
-16,/api/v1/reports/1/export,GET,anonymous(empty),401,401/403,NO,info,2031.1,Token type: empty. Got 401.
-17,/api/v1/slides/upload,POST,anonymous(garbage),401,401/403,NO,info,2036.4,Token type: garbage. Got 401.
-18,/api/v1/slides/library,GET,anonymous(garbage),401,401/403,NO,info,2054.3,Token type: garbage. Got 401.
-19,/api/v1/slides/1,GET,anonymous(garbage),401,401/403,NO,info,2029.3,Token type: garbage. Got 401.
-20,/api/v1/slides/stats/dashboard,GET,anonymous(garbage),401,401/403,NO,info,2038,Token type: garbage. Got 401.
-21,/api/v1/analysis/run,POST,anonymous(garbage),401,401/403,NO,info,2030.2,Token type: garbage. Got 401.
-22,/api/v1/analysis/1/result,GET,anonymous(garbage),401,401/403,NO,info,2061.8,Token type: garbage. Got 401.
-23,/api/v1/analysis/1/review,PUT,anonymous(garbage),401,401/403,NO,info,2030.4,Token type: garbage. Got 401.
-24,/api/v1/reports/1/export,GET,anonymous(garbage),401,401/403,NO,info,2020,Token type: garbage. Got 401.
-25,/api/v1/slides/upload,POST,anonymous(tampered_sig),401,401/403,NO,info,2046,Token type: tampered_sig. Got 401.
-26,/api/v1/slides/library,GET,anonymous(tampered_sig),401,401/403,NO,info,2027,Token type: tampered_sig. Got 401.
-27,/api/v1/slides/1,GET,anonymous(tampered_sig),401,401/403,NO,info,2051.1,Token type: tampered_sig. Got 401.
-28,/api/v1/slides/stats/dashboard,GET,anonymous(tampered_sig),401,401/403,NO,info,2038.3,Token type: tampered_sig. Got 401.
-29,/api/v1/analysis/run,POST,anonymous(tampered_sig),401,401/403,NO,info,2037.1,Token type: tampered_sig. Got 401.
-30,/api/v1/analysis/1/result,GET,anonymous(tampered_sig),401,401/403,NO,info,2017,Token type: tampered_sig. Got 401.
-31,/api/v1/analysis/1/review,PUT,anonymous(tampered_sig),401,401/403,NO,info,2022.9,Token type: tampered_sig. Got 401.
-32,/api/v1/reports/1/export,GET,anonymous(tampered_sig),401,401/403,NO,info,2030.3,Token type: tampered_sig. Got 401.
-33,/api/v1/slides/upload,POST,anonymous(missing_bearer),401,401/403,NO,info,2052.7,Token type: missing_bearer. Got 401.
-34,/api/v1/slides/library,GET,anonymous(missing_bearer),401,401/403,NO,info,2036.3,Token type: missing_bearer. Got 401.
-35,/api/v1/slides/1,GET,anonymous(missing_bearer),401,401/403,NO,info,2028,Token type: missing_bearer. Got 401.
-36,/api/v1/slides/stats/dashboard,GET,anonymous(missing_bearer),401,401/403,NO,info,2063.1,Token type: missing_bearer. Got 401.
-37,/api/v1/analysis/run,POST,anonymous(missing_bearer),401,401/403,NO,info,2047.2,Token type: missing_bearer. Got 401.
-38,/api/v1/analysis/1/result,GET,anonymous(missing_bearer),401,401/403,NO,info,2047.5,Token type: missing_bearer. Got 401.
-39,/api/v1/analysis/1/review,PUT,anonymous(missing_bearer),401,401/403,NO,info,2060.4,Token type: missing_bearer. Got 401.
-40,/api/v1/reports/1/export,GET,anonymous(missing_bearer),401,401/403,NO,info,2045.4,Token type: missing_bearer. Got 401.
-41,/api/v1/slides/upload,POST,Consultant Pathologist,skipped,role-dependent,NO,info,0,Skipped: upload requires multipart form data.
-42,/api/v1/slides/library,GET,Consultant Pathologist,200,role-dependent,NO,info,2071.1,Consultant Pathologist got 200.
-43,/api/v1/slides/1,GET,Consultant Pathologist,403,role-dependent,NO,info,2062.4,Consultant Pathologist got 403.
-44,/api/v1/slides/stats/dashboard,GET,Consultant Pathologist,200,role-dependent,NO,info,2087.7,Consultant Pathologist got 200.
-45,/api/v1/analysis/run,POST,Consultant Pathologist,403,role-dependent,NO,info,2066.3,Consultant Pathologist got 403.
-46,/api/v1/analysis/1/result,GET,Consultant Pathologist,403,role-dependent,NO,info,2061.5,Consultant Pathologist got 403.
-47,/api/v1/analysis/1/review,PUT,Consultant Pathologist,403,role-dependent,NO,info,2071,Consultant Pathologist got 403.
-48,/api/v1/reports/1/export,GET,Consultant Pathologist,403,role-dependent,NO,info,2059.9,Consultant Pathologist got 403.
-49,/api/v1/slides/upload,POST,Resident,skipped,role-dependent,NO,info,0,Skipped: upload requires multipart form data.
-50,/api/v1/slides/library,GET,Resident,200,role-dependent,NO,info,2071.2,Resident got 200.
-51,/api/v1/slides/1,GET,Resident,403,role-dependent,NO,info,2064.4,Resident got 403.
-52,/api/v1/slides/stats/dashboard,GET,Resident,200,role-dependent,NO,info,2065.2,Resident got 200.
-53,/api/v1/analysis/run,POST,Resident,403,role-dependent,NO,info,2073.5,Resident got 403.
-54,/api/v1/analysis/1/result,GET,Resident,403,role-dependent,NO,info,2045.2,Resident got 403.
-55,/api/v1/analysis/1/review,PUT,Resident,403,role-dependent,NO,info,2036.3,Resident got 403.
-56,/api/v1/reports/1/export,GET,Resident,403,role-dependent,NO,info,2045.9,Resident got 403.
-57,/api/v1/slides/upload,POST,Lab Tech,skipped,role-dependent,NO,info,0,Skipped: upload requires multipart form data.
-58,/api/v1/slides/library,GET,Lab Tech,200,role-dependent,NO,info,2055.5,Lab Tech got 200.
-59,/api/v1/slides/1,GET,Lab Tech,403,role-dependent,NO,info,2053.2,Lab Tech got 403.
-60,/api/v1/slides/stats/dashboard,GET,Lab Tech,200,role-dependent,NO,info,2066.8,Lab Tech got 200.
-61,/api/v1/analysis/run,POST,Lab Tech,403,role-dependent,NO,info,2052.4,Lab Tech got 403.
-62,/api/v1/analysis/1/result,GET,Lab Tech,403,role-dependent,NO,info,2069.9,Lab Tech got 403.
-63,/api/v1/analysis/1/review,PUT,Lab Tech,403,role-dependent,NO,info,2046,Lab Tech got 403.
-64,/api/v1/reports/1/export,GET,Lab Tech,403,role-dependent,NO,info,2043.9,Lab Tech got 403.
-65,/api/v1/slides/{id},GET,Resident,403,403/404,NO,info,2066.4,User B (Resident) accessing slide 1. Got 403.
-66,/api/v1/analysis/{id}/result,GET,Resident,403,403/404,NO,info,2076.4,User B (Resident) accessing slide 1. Got 403.
-67,/api/v1/reports/{id}/export?format=fhir,GET,Resident,403,403/404,NO,info,2082.7,User B (Resident) accessing slide 1. Got 403.
-68,/api/v1/slides/{id},GET,Resident,403,403/404,NO,info,2038.8,User B (Resident) accessing slide 2. Got 403.
-69,/api/v1/analysis/{id}/result,GET,Resident,403,403/404,NO,info,2054.5,User B (Resident) accessing slide 2. Got 403.
-70,/api/v1/reports/{id}/export?format=fhir,GET,Resident,403,403/404,NO,info,2051.1,User B (Resident) accessing slide 2. Got 403.
-71,/api/v1/slides/{id},GET,Resident,403,403/404,NO,info,2066.9,User B (Resident) accessing slide 3. Got 403.
-72,/api/v1/analysis/{id}/result,GET,Resident,403,403/404,NO,info,2093.1,User B (Resident) accessing slide 3. Got 403.
-73,/api/v1/reports/{id}/export?format=fhir,GET,Resident,403,403/404,NO,info,2086.9,User B (Resident) accessing slide 3. Got 403.
-74,/api/v1/slides/{slide_id},GET,Resident,403,403/404,NO,info,2068.7,Sequential enumeration: slide_id=1. Got 403.
-75,/api/v1/slides/{slide_id},GET,Resident,403,403/404,NO,info,2056.2,Sequential enumeration: slide_id=2. Got 403.
-76,/api/v1/slides/{slide_id},GET,Resident,403,403/404,NO,info,2046.1,Sequential enumeration: slide_id=3. Got 403.
-77,/api/v1/slides/{slide_id},GET,Resident,403,403/404,NO,info,2036.7,Sequential enumeration: slide_id=4. Got 403.
-78,/api/v1/slides/{slide_id},GET,Resident,403,403/404,NO,info,2047.1,Sequential enumeration: slide_id=5. Got 403.
-79,/api/v1/slides/stats/dashboard,GET,tampered(role→admin),401,401/403,NO,info,2052.7,Tampered JWT: role→admin. Server returned 401.
-80,/api/v1/slides/stats/dashboard,GET,tampered(sub→hacker),401,401/403,NO,info,2030.7,Tampered JWT: sub→hacker. Server returned 401.
-81,/api/v1/slides/stats/dashboard,GET,tampered(uid→1),401,401/403,NO,info,2057.1,Tampered JWT: uid→1. Server returned 401.
-82,/api/v1/slides/stats/dashboard,GET,tampered(alg→none),401,401/403,NO,info,2036.7,Tampered JWT: alg→none. Server returned 401.
-83,/api/v1/auth/login,POST,anonymous,422,401/422,NO,info,2032.2,SQLi payload in login. Status 422.
-84,/api/v1/auth/login,POST,anonymous,422,401/422,NO,info,2063.3,SQLi payload in login. Status 422.
-85,/api/v1/auth/login,POST,anonymous,422,401/422,NO,info,2037.6,SQLi payload in login. Status 422.
-86,/api/v1/auth/login,POST,anonymous,422,401/422,NO,info,2029.8,SQLi payload in login. Status 422.
-87,/api/v1/auth/login,POST,anonymous,422,401/422,NO,info,2053.4,SQLi payload in login. Status 422.
-88,/api/v1/slides/library,GET,Consultant Pathologist,200,200/422,NO,info,2049.6,SQLi payload in query param. Status 200.
-89,/api/v1/slides/library,GET,Consultant Pathologist,200,200/422,NO,info,2048.3,SQLi payload in query param. Status 200.
-90,/api/v1/slides/library,GET,Consultant Pathologist,200,200/422,NO,info,2046.6,SQLi payload in query param. Status 200.
-91,/api/v1/auth/forgot-password,POST,anonymous,422,404/422,NO,info,2054.5,SQLi payload in forgot-password. Status 422.
-92,/api/v1/auth/forgot-password,POST,anonymous,422,404/422,NO,info,2029.1,SQLi payload in forgot-password. Status 422.
-93,/api/v1/auth/signup,POST,anonymous,422,422,NO,info,2052.3,Arbitrary role rejected with 422.
-94,/api/v1/auth/login,POST,anonymous,"all:[401, 429]",429 after burst,NO,info,61545.1,"Sent 30 requests in 61.5s. Rate limited: True. Statuses: [401, 429]."
-95,/api/v1/auth/signup,POST,anonymous,422,role validated server-side,NO,info,2050.6,Signup role validation is enforced. Arbitrary roles like 'SuperAdmin' are rejected.
-96,/api/v1/slides/stats/dashboard,GET,anonymous,401,restricted,NO,info,2042.6,CORS header: not returned.
+1,/api/v1/slides/upload,POST,anonymous,500,401/403,NO,info,2142.9,No token sent. Got 500.
+2,/api/v1/slides/library,GET,anonymous,500,401/403,NO,info,1707.9,No token sent. Got 500.
+3,/api/v1/slides/1,GET,anonymous,500,401/403,NO,info,1550.2,No token sent. Got 500.
+4,/api/v1/slides/stats/dashboard,GET,anonymous,500,401/403,NO,info,3682.4,No token sent. Got 500.
+5,/api/v1/analysis/run,POST,anonymous,500,401/403,NO,info,7057.6,No token sent. Got 500.
+6,/api/v1/analysis/1/result,GET,anonymous,500,401/403,NO,info,1474.5,No token sent. Got 500.
+7,/api/v1/analysis/1/review,PUT,anonymous,500,401/403,NO,info,1429.6,No token sent. Got 500.
+8,/api/v1/reports/1/export,GET,anonymous,500,401/403,NO,info,1481.0,No token sent. Got 500.
+9,/api/v1/slides/upload,POST,anonymous(empty),500,401/403,NO,info,1462.3,Token type: empty. Got 500.
+10,/api/v1/slides/library,GET,anonymous(empty),500,401/403,NO,info,1599.9,Token type: empty. Got 500.
+11,/api/v1/slides/1,GET,anonymous(empty),500,401/403,NO,info,1660.7,Token type: empty. Got 500.
+12,/api/v1/slides/stats/dashboard,GET,anonymous(empty),500,401/403,NO,info,1442.9,Token type: empty. Got 500.
+13,/api/v1/analysis/run,POST,anonymous(empty),500,401/403,NO,info,1420.6,Token type: empty. Got 500.
+14,/api/v1/analysis/1/result,GET,anonymous(empty),500,401/403,NO,info,1434.9,Token type: empty. Got 500.
+15,/api/v1/analysis/1/review,PUT,anonymous(empty),500,401/403,NO,info,1425.0,Token type: empty. Got 500.
+16,/api/v1/reports/1/export,GET,anonymous(empty),500,401/403,NO,info,1412.6,Token type: empty. Got 500.
+17,/api/v1/slides/upload,POST,anonymous(garbage),500,401/403,NO,info,1464.5,Token type: garbage. Got 500.
+18,/api/v1/slides/library,GET,anonymous(garbage),500,401/403,NO,info,1406.7,Token type: garbage. Got 500.
+19,/api/v1/slides/1,GET,anonymous(garbage),500,401/403,NO,info,1432.8,Token type: garbage. Got 500.
+20,/api/v1/slides/stats/dashboard,GET,anonymous(garbage),500,401/403,NO,info,1399.9,Token type: garbage. Got 500.
+21,/api/v1/analysis/run,POST,anonymous(garbage),500,401/403,NO,info,1400.1,Token type: garbage. Got 500.
+22,/api/v1/analysis/1/result,GET,anonymous(garbage),500,401/403,NO,info,1459.9,Token type: garbage. Got 500.
+23,/api/v1/analysis/1/review,PUT,anonymous(garbage),500,401/403,NO,info,1485.7,Token type: garbage. Got 500.
+24,/api/v1/reports/1/export,GET,anonymous(garbage),500,401/403,NO,info,1465.5,Token type: garbage. Got 500.
+25,/api/v1/slides/upload,POST,anonymous(tampered_sig),500,401/403,NO,info,1622.2,Token type: tampered_sig. Got 500.
+26,/api/v1/slides/library,GET,anonymous(tampered_sig),500,401/403,NO,info,1569.8,Token type: tampered_sig. Got 500.
+27,/api/v1/slides/1,GET,anonymous(tampered_sig),500,401/403,NO,info,1501.9,Token type: tampered_sig. Got 500.
+28,/api/v1/slides/stats/dashboard,GET,anonymous(tampered_sig),500,401/403,NO,info,1417.1,Token type: tampered_sig. Got 500.
+29,/api/v1/analysis/run,POST,anonymous(tampered_sig),500,401/403,NO,info,1459.3,Token type: tampered_sig. Got 500.
+30,/api/v1/analysis/1/result,GET,anonymous(tampered_sig),500,401/403,NO,info,1449.4,Token type: tampered_sig. Got 500.
+31,/api/v1/analysis/1/review,PUT,anonymous(tampered_sig),500,401/403,NO,info,1448.3,Token type: tampered_sig. Got 500.
+32,/api/v1/reports/1/export,GET,anonymous(tampered_sig),500,401/403,NO,info,1478.1,Token type: tampered_sig. Got 500.
+33,/api/v1/slides/upload,POST,anonymous(missing_bearer),500,401/403,NO,info,1446.7,Token type: missing_bearer. Got 500.
+34,/api/v1/slides/library,GET,anonymous(missing_bearer),500,401/403,NO,info,1434.0,Token type: missing_bearer. Got 500.
+35,/api/v1/slides/1,GET,anonymous(missing_bearer),500,401/403,NO,info,1449.8,Token type: missing_bearer. Got 500.
+36,/api/v1/slides/stats/dashboard,GET,anonymous(missing_bearer),500,401/403,NO,info,1516.0,Token type: missing_bearer. Got 500.
+37,/api/v1/analysis/run,POST,anonymous(missing_bearer),500,401/403,NO,info,1466.3,Token type: missing_bearer. Got 500.
+38,/api/v1/analysis/1/result,GET,anonymous(missing_bearer),500,401/403,NO,info,1475.6,Token type: missing_bearer. Got 500.
+39,/api/v1/analysis/1/review,PUT,anonymous(missing_bearer),500,401/403,NO,info,1500.2,Token type: missing_bearer. Got 500.
+40,/api/v1/reports/1/export,GET,anonymous(missing_bearer),500,401/403,NO,info,1487.8,Token type: missing_bearer. Got 500.
+41,/api/v1/auth/signup,POST,anonymous,500,422,NO,info,1512.1,Arbitrary role rejected with 500.
+42,/api/v1/auth/login,POST,anonymous,all:[500],429 after burst,YES,MEDIUM,44113.5,Sent 30 requests in 44.1s. Rate limited: False. Statuses: [500].
+43,/api/v1/auth/signup,POST,anonymous,500,role validated server-side,NO,info,1558.3,Signup role validation is enforced. Arbitrary roles like 'SuperAdmin' are rejected.
+44,/api/v1/slides/stats/dashboard,GET,anonymous,500,restricted,NO,info,1516.5,CORS header: not returned.

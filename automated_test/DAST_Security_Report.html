@@ -281,17 +281,17 @@
     <header>
         <h1>DAST Security Assessment Report</h1>
         <p>OralDysplasia AI — API Security Performance Analysis</p>
-        <p>Target Deployment: <strong>https://oral-dysplasia-ai.vercel.app</strong> | Run Date: 16 June 2026</p>
+        <p>Target Deployment: <strong>https://oral-dysplasia-ai.vercel.app</strong> | Run Date: 08 August 2026</p>
     </header>
 
     <div class="grid-kpis">
         <div class="kpi-card">
-            <div class="kpi-value" style="color: var(--primary);">96</div>
+            <div class="kpi-value" style="color: var(--primary);">44</div>
             <div class="kpi-label">Total Tests Run</div>
         </div>
-        <div class="kpi-card" style="background-color: #F0FDF4; border-color: #BBF7D0;">
-            <div class="kpi-value" style="color: var(--pass);">0</div>
-            <div class="kpi-label" style="color: var(--pass);">Security Findings</div>
+        <div class="kpi-card" style="background-color: #FFF5F5; border-color: #FEB2B2;">
+            <div class="kpi-value" style="color: var(--critical);">1</div>
+            <div class="kpi-label" style="color: var(--critical);">Security Findings</div>
         </div>
         <div class="kpi-card" style="background-color: var(--critical); color: white;">
             <div class="kpi-value" style="color: white;">0</div>
@@ -302,15 +302,15 @@
             <div class="kpi-label" style="color: white; opacity: 0.9;">High</div>
         </div>
         <div class="kpi-card" style="background-color: var(--medium); color: white;">
-            <div class="kpi-value" style="color: white;">0</div>
+            <div class="kpi-value" style="color: white;">1</div>
             <div class="kpi-label" style="color: white; opacity: 0.9;">Medium</div>
         </div>
     </div>
 
     <div class="tabs-header">
         <button class="tab-btn active" onclick="switchTab('summary')">Executive Summary</button>
-        <button class="tab-btn" onclick="switchTab('findings')">Detailed Findings (0)</button>
-        <button class="tab-btn" onclick="switchTab('results')">All Tests (96)</button>
+        <button class="tab-btn" onclick="switchTab('findings')">Detailed Findings (1)</button>
+        <button class="tab-btn" onclick="switchTab('results')">All Tests (44)</button>
         <button class="tab-btn" onclick="switchTab('endpoints')">Endpoints Catalog</button>
     </div>
 
@@ -324,7 +324,7 @@
                 <div class="meta-item"><strong>Target URL:</strong> <a href="https://oral-dysplasia-ai.vercel.app" target="_blank">https://oral-dysplasia-ai.vercel.app</a></div>
                 <div class="meta-item"><strong>Authentication:</strong> JWT (Bearer tokens)</div>
                 <div class="meta-item"><strong>Endpoints Tested:</strong> 13</div>
-                <div class="meta-item"><strong>Test Date:</strong> 2026-06-16</div>
+                <div class="meta-item"><strong>Test Date:</strong> 2026-08-08</div>
             </div>
         </div>
         
@@ -351,38 +351,17 @@
                     </tr>
                     <tr>
                         <td><strong>Authz Rbac</strong></td>
-                        <td style="text-align: center;">25</td>
-                        <td style="text-align: center;">25</td>
-                        <td style="text-align: center; font-weight: bold; color: inherit;">0</td>
-                        <td><span class="badge pass">PASS</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Idor</strong></td>
-                        <td style="text-align: center;">14</td>
-                        <td style="text-align: center;">14</td>
-                        <td style="text-align: center; font-weight: bold; color: inherit;">0</td>
-                        <td><span class="badge pass">PASS</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Token Tampering</strong></td>
-                        <td style="text-align: center;">4</td>
-                        <td style="text-align: center;">4</td>
-                        <td style="text-align: center; font-weight: bold; color: inherit;">0</td>
-                        <td><span class="badge pass">PASS</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Injection</strong></td>
-                        <td style="text-align: center;">10</td>
-                        <td style="text-align: center;">10</td>
+                        <td style="text-align: center;">1</td>
+                        <td style="text-align: center;">1</td>
                         <td style="text-align: center; font-weight: bold; color: inherit;">0</td>
                         <td><span class="badge pass">PASS</span></td>
                     </tr>
                     <tr>
                         <td><strong>Rate Limiting</strong></td>
                         <td style="text-align: center;">1</td>
-                        <td style="text-align: center;">1</td>
-                        <td style="text-align: center; font-weight: bold; color: inherit;">0</td>
-                        <td><span class="badge pass">PASS</span></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center; font-weight: bold; color: var(--critical);">1</td>
+                        <td><span class="badge fail">1 FAIL</span></td>
                     </tr>
                     <tr>
                         <td><strong>Hardcoded Creds</strong></td>
@@ -406,8 +385,27 @@
     <!-- TAB 2: DETAILED FINDINGS -->
     <div id="tab-findings" class="tab-content">
         <div class="card">
-            <h2>Security Findings (0)</h2>
-<p style='color: var(--pass); font-weight: 600;'>No security vulnerabilities were detected! All checks passed.</p>
+            <h2>Security Findings (1)</h2>
+
+            <div class="finding-card medium">
+                <div class="finding-title">
+                    <span class="badge medium">MEDIUM</span>
+                    <strong>Rate Limiting Vulnerability</strong>
+                </div>
+                <div class="finding-meta">
+                    <strong>Endpoint:</strong> <code>POST /api/v1/auth/login</code> | 
+                    <strong>Tested Role:</strong> <code>anonymous</code>
+                </div>
+                <div class="finding-desc">
+                    Sent 30 requests in 44.1s. Rate limited: False. Statuses: [500].
+                </div>
+                <div class="remediation-box">
+                    <h4>Remediation Action:</h4>
+                    <p>Add rate-limiting middleware (like <code>slowapi</code>) to sensitive endpoints. Set limits of 5 login attempts per minute per IP address, and general API limits of 60 requests per minute.</p>
+                </div>
+            </div>
+            <hr style="margin: 20px 0; border: 0; border-top: 1px solid var(--border);">
+        
         </div>
     </div>
 
@@ -439,960 +437,440 @@
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/slides/upload</code></td>
                         <td style="text-align: center;"><code>POST</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2038.8ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">2142.9ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">2</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/slides/library</code></td>
                         <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2050.8ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1707.9ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">3</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/slides/1</code></td>
                         <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2076.4ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1550.2ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">4</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/slides/stats/dashboard</code></td>
                         <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2057.4ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">3682.4ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">5</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/analysis/run</code></td>
                         <td style="text-align: center;"><code>POST</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2044.2ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">7057.6ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">6</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/analysis/1/result</code></td>
                         <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2081.4ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1474.5ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">7</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/analysis/1/review</code></td>
                         <td style="text-align: center;"><code>PUT</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2044.0ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1429.6ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">8</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/reports/1/export</code></td>
                         <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2059.3ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1481.0ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">9</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/slides/upload</code></td>
                         <td style="text-align: center;"><code>POST</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2081.2ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1462.3ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">10</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/slides/library</code></td>
                         <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2063.3ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1599.9ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">11</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/slides/1</code></td>
                         <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2059.9ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1660.7ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">12</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/slides/stats/dashboard</code></td>
                         <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2046.7ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1442.9ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">13</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/analysis/run</code></td>
                         <td style="text-align: center;"><code>POST</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2049.7ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1420.6ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">14</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/analysis/1/result</code></td>
                         <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2029.0ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1434.9ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">15</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/analysis/1/review</code></td>
                         <td style="text-align: center;"><code>PUT</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2029.7ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1425.0ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">16</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/reports/1/export</code></td>
                         <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2031.1ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1412.6ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">17</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/slides/upload</code></td>
                         <td style="text-align: center;"><code>POST</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2036.4ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1464.5ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">18</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/slides/library</code></td>
                         <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2054.3ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1406.7ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">19</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/slides/1</code></td>
                         <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2029.3ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1432.8ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">20</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/slides/stats/dashboard</code></td>
                         <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2038.0ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1399.9ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">21</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/analysis/run</code></td>
                         <td style="text-align: center;"><code>POST</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2030.2ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1400.1ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">22</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/analysis/1/result</code></td>
                         <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2061.8ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1459.9ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">23</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/analysis/1/review</code></td>
                         <td style="text-align: center;"><code>PUT</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2030.4ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1485.7ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">24</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/reports/1/export</code></td>
                         <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2020.0ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1465.5ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">25</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/slides/upload</code></td>
                         <td style="text-align: center;"><code>POST</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2046.0ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1622.2ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">26</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/slides/library</code></td>
                         <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2027.0ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1569.8ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">27</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/slides/1</code></td>
                         <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2051.1ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1501.9ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">28</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/slides/stats/dashboard</code></td>
                         <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2038.3ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1417.1ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">29</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/analysis/run</code></td>
                         <td style="text-align: center;"><code>POST</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2037.1ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1459.3ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">30</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/analysis/1/result</code></td>
                         <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2017.0ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1449.4ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">31</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/analysis/1/review</code></td>
                         <td style="text-align: center;"><code>PUT</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2022.9ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1448.3ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">32</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/reports/1/export</code></td>
                         <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2030.3ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1478.1ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">33</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/slides/upload</code></td>
                         <td style="text-align: center;"><code>POST</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2052.7ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1446.7ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">34</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/slides/library</code></td>
                         <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2036.3ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1434.0ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">35</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/slides/1</code></td>
                         <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2028.0ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1449.8ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">36</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/slides/stats/dashboard</code></td>
                         <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2063.1ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1516.0ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">37</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/analysis/run</code></td>
                         <td style="text-align: center;"><code>POST</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2047.2ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1466.3ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">38</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/analysis/1/result</code></td>
                         <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2047.5ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1475.6ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">39</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/analysis/1/review</code></td>
                         <td style="text-align: center;"><code>PUT</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2060.4ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1500.2ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">40</td>
                         <td>Authn Bypass</td>
                         <td><code>/api/v1/reports/1/export</code></td>
                         <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">401/403</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2045.4ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1487.8ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">41</td>
                         <td>Authz Rbac</td>
-                        <td><code>/api/v1/slides/upload</code></td>
+                        <td><code>/api/v1/auth/signup</code></td>
                         <td style="text-align: center;"><code>POST</code></td>
-                        <td style="text-align: center;">skipped</td>
-                        <td style="text-align: center;">role-dependent</td>
+                        <td style="text-align: center;">500</td>
+                        <td style="text-align: center;">422</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">0ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1512.1ms</td>
                     </tr>
                     <tr class="test-row">
                         <td style="text-align: center; color: var(--text-muted);">42</td>
-                        <td>Authz Rbac</td>
-                        <td><code>/api/v1/slides/library</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">200</td>
-                        <td style="text-align: center;">role-dependent</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2071.1ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">43</td>
-                        <td>Authz Rbac</td>
-                        <td><code>/api/v1/slides/1</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">403</td>
-                        <td style="text-align: center;">role-dependent</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2062.4ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">44</td>
-                        <td>Authz Rbac</td>
-                        <td><code>/api/v1/slides/stats/dashboard</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">200</td>
-                        <td style="text-align: center;">role-dependent</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2087.7ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">45</td>
-                        <td>Authz Rbac</td>
-                        <td><code>/api/v1/analysis/run</code></td>
-                        <td style="text-align: center;"><code>POST</code></td>
-                        <td style="text-align: center;">403</td>
-                        <td style="text-align: center;">role-dependent</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2066.3ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">46</td>
-                        <td>Authz Rbac</td>
-                        <td><code>/api/v1/analysis/1/result</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">403</td>
-                        <td style="text-align: center;">role-dependent</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2061.5ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">47</td>
-                        <td>Authz Rbac</td>
-                        <td><code>/api/v1/analysis/1/review</code></td>
-                        <td style="text-align: center;"><code>PUT</code></td>
-                        <td style="text-align: center;">403</td>
-                        <td style="text-align: center;">role-dependent</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2071.0ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">48</td>
-                        <td>Authz Rbac</td>
-                        <td><code>/api/v1/reports/1/export</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">403</td>
-                        <td style="text-align: center;">role-dependent</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2059.9ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">49</td>
-                        <td>Authz Rbac</td>
-                        <td><code>/api/v1/slides/upload</code></td>
-                        <td style="text-align: center;"><code>POST</code></td>
-                        <td style="text-align: center;">skipped</td>
-                        <td style="text-align: center;">role-dependent</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">0ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">50</td>
-                        <td>Authz Rbac</td>
-                        <td><code>/api/v1/slides/library</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">200</td>
-                        <td style="text-align: center;">role-dependent</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2071.2ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">51</td>
-                        <td>Authz Rbac</td>
-                        <td><code>/api/v1/slides/1</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">403</td>
-                        <td style="text-align: center;">role-dependent</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2064.4ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">52</td>
-                        <td>Authz Rbac</td>
-                        <td><code>/api/v1/slides/stats/dashboard</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">200</td>
-                        <td style="text-align: center;">role-dependent</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2065.2ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">53</td>
-                        <td>Authz Rbac</td>
-                        <td><code>/api/v1/analysis/run</code></td>
-                        <td style="text-align: center;"><code>POST</code></td>
-                        <td style="text-align: center;">403</td>
-                        <td style="text-align: center;">role-dependent</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2073.5ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">54</td>
-                        <td>Authz Rbac</td>
-                        <td><code>/api/v1/analysis/1/result</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">403</td>
-                        <td style="text-align: center;">role-dependent</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2045.2ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">55</td>
-                        <td>Authz Rbac</td>
-                        <td><code>/api/v1/analysis/1/review</code></td>
-                        <td style="text-align: center;"><code>PUT</code></td>
-                        <td style="text-align: center;">403</td>
-                        <td style="text-align: center;">role-dependent</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2036.3ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">56</td>
-                        <td>Authz Rbac</td>
-                        <td><code>/api/v1/reports/1/export</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">403</td>
-                        <td style="text-align: center;">role-dependent</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2045.9ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">57</td>
-                        <td>Authz Rbac</td>
-                        <td><code>/api/v1/slides/upload</code></td>
-                        <td style="text-align: center;"><code>POST</code></td>
-                        <td style="text-align: center;">skipped</td>
-                        <td style="text-align: center;">role-dependent</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">0ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">58</td>
-                        <td>Authz Rbac</td>
-                        <td><code>/api/v1/slides/library</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">200</td>
-                        <td style="text-align: center;">role-dependent</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2055.5ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">59</td>
-                        <td>Authz Rbac</td>
-                        <td><code>/api/v1/slides/1</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">403</td>
-                        <td style="text-align: center;">role-dependent</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2053.2ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">60</td>
-                        <td>Authz Rbac</td>
-                        <td><code>/api/v1/slides/stats/dashboard</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">200</td>
-                        <td style="text-align: center;">role-dependent</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2066.8ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">61</td>
-                        <td>Authz Rbac</td>
-                        <td><code>/api/v1/analysis/run</code></td>
-                        <td style="text-align: center;"><code>POST</code></td>
-                        <td style="text-align: center;">403</td>
-                        <td style="text-align: center;">role-dependent</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2052.4ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">62</td>
-                        <td>Authz Rbac</td>
-                        <td><code>/api/v1/analysis/1/result</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">403</td>
-                        <td style="text-align: center;">role-dependent</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2069.9ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">63</td>
-                        <td>Authz Rbac</td>
-                        <td><code>/api/v1/analysis/1/review</code></td>
-                        <td style="text-align: center;"><code>PUT</code></td>
-                        <td style="text-align: center;">403</td>
-                        <td style="text-align: center;">role-dependent</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2046.0ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">64</td>
-                        <td>Authz Rbac</td>
-                        <td><code>/api/v1/reports/1/export</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">403</td>
-                        <td style="text-align: center;">role-dependent</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2043.9ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">65</td>
-                        <td>Idor</td>
-                        <td><code>/api/v1/slides/{id}</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">403</td>
-                        <td style="text-align: center;">403/404</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2066.4ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">66</td>
-                        <td>Idor</td>
-                        <td><code>/api/v1/analysis/{id}/result</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">403</td>
-                        <td style="text-align: center;">403/404</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2076.4ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">67</td>
-                        <td>Idor</td>
-                        <td><code>/api/v1/reports/{id}/export?format=fhir</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">403</td>
-                        <td style="text-align: center;">403/404</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2082.7ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">68</td>
-                        <td>Idor</td>
-                        <td><code>/api/v1/slides/{id}</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">403</td>
-                        <td style="text-align: center;">403/404</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2038.8ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">69</td>
-                        <td>Idor</td>
-                        <td><code>/api/v1/analysis/{id}/result</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">403</td>
-                        <td style="text-align: center;">403/404</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2054.5ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">70</td>
-                        <td>Idor</td>
-                        <td><code>/api/v1/reports/{id}/export?format=fhir</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">403</td>
-                        <td style="text-align: center;">403/404</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2051.1ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">71</td>
-                        <td>Idor</td>
-                        <td><code>/api/v1/slides/{id}</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">403</td>
-                        <td style="text-align: center;">403/404</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2066.9ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">72</td>
-                        <td>Idor</td>
-                        <td><code>/api/v1/analysis/{id}/result</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">403</td>
-                        <td style="text-align: center;">403/404</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2093.1ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">73</td>
-                        <td>Idor</td>
-                        <td><code>/api/v1/reports/{id}/export?format=fhir</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">403</td>
-                        <td style="text-align: center;">403/404</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2086.9ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">74</td>
-                        <td>Idor</td>
-                        <td><code>/api/v1/slides/{slide_id}</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">403</td>
-                        <td style="text-align: center;">403/404</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2068.7ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">75</td>
-                        <td>Idor</td>
-                        <td><code>/api/v1/slides/{slide_id}</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">403</td>
-                        <td style="text-align: center;">403/404</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2056.2ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">76</td>
-                        <td>Idor</td>
-                        <td><code>/api/v1/slides/{slide_id}</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">403</td>
-                        <td style="text-align: center;">403/404</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2046.1ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">77</td>
-                        <td>Idor</td>
-                        <td><code>/api/v1/slides/{slide_id}</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">403</td>
-                        <td style="text-align: center;">403/404</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2036.7ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">78</td>
-                        <td>Idor</td>
-                        <td><code>/api/v1/slides/{slide_id}</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">403</td>
-                        <td style="text-align: center;">403/404</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2047.1ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">79</td>
-                        <td>Token Tampering</td>
-                        <td><code>/api/v1/slides/stats/dashboard</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">401</td>
-                        <td style="text-align: center;">401/403</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2052.7ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">80</td>
-                        <td>Token Tampering</td>
-                        <td><code>/api/v1/slides/stats/dashboard</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">401</td>
-                        <td style="text-align: center;">401/403</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2030.7ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">81</td>
-                        <td>Token Tampering</td>
-                        <td><code>/api/v1/slides/stats/dashboard</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">401</td>
-                        <td style="text-align: center;">401/403</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2057.1ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">82</td>
-                        <td>Token Tampering</td>
-                        <td><code>/api/v1/slides/stats/dashboard</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">401</td>
-                        <td style="text-align: center;">401/403</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2036.7ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">83</td>
-                        <td>Injection</td>
-                        <td><code>/api/v1/auth/login</code></td>
-                        <td style="text-align: center;"><code>POST</code></td>
-                        <td style="text-align: center;">422</td>
-                        <td style="text-align: center;">401/422</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2032.2ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">84</td>
-                        <td>Injection</td>
-                        <td><code>/api/v1/auth/login</code></td>
-                        <td style="text-align: center;"><code>POST</code></td>
-                        <td style="text-align: center;">422</td>
-                        <td style="text-align: center;">401/422</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2063.3ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">85</td>
-                        <td>Injection</td>
-                        <td><code>/api/v1/auth/login</code></td>
-                        <td style="text-align: center;"><code>POST</code></td>
-                        <td style="text-align: center;">422</td>
-                        <td style="text-align: center;">401/422</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2037.6ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">86</td>
-                        <td>Injection</td>
-                        <td><code>/api/v1/auth/login</code></td>
-                        <td style="text-align: center;"><code>POST</code></td>
-                        <td style="text-align: center;">422</td>
-                        <td style="text-align: center;">401/422</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2029.8ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">87</td>
-                        <td>Injection</td>
-                        <td><code>/api/v1/auth/login</code></td>
-                        <td style="text-align: center;"><code>POST</code></td>
-                        <td style="text-align: center;">422</td>
-                        <td style="text-align: center;">401/422</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2053.4ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">88</td>
-                        <td>Injection</td>
-                        <td><code>/api/v1/slides/library</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">200</td>
-                        <td style="text-align: center;">200/422</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2049.6ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">89</td>
-                        <td>Injection</td>
-                        <td><code>/api/v1/slides/library</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">200</td>
-                        <td style="text-align: center;">200/422</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2048.3ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">90</td>
-                        <td>Injection</td>
-                        <td><code>/api/v1/slides/library</code></td>
-                        <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">200</td>
-                        <td style="text-align: center;">200/422</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2046.6ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">91</td>
-                        <td>Injection</td>
-                        <td><code>/api/v1/auth/forgot-password</code></td>
-                        <td style="text-align: center;"><code>POST</code></td>
-                        <td style="text-align: center;">422</td>
-                        <td style="text-align: center;">404/422</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2054.5ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">92</td>
-                        <td>Injection</td>
-                        <td><code>/api/v1/auth/forgot-password</code></td>
-                        <td style="text-align: center;"><code>POST</code></td>
-                        <td style="text-align: center;">422</td>
-                        <td style="text-align: center;">404/422</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2029.1ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">93</td>
-                        <td>Authz Rbac</td>
-                        <td><code>/api/v1/auth/signup</code></td>
-                        <td style="text-align: center;"><code>POST</code></td>
-                        <td style="text-align: center;">422</td>
-                        <td style="text-align: center;">422</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2052.3ms</td>
-                    </tr>
-                    <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">94</td>
                         <td>Rate Limiting</td>
                         <td><code>/api/v1/auth/login</code></td>
                         <td style="text-align: center;"><code>POST</code></td>
-                        <td style="text-align: center;">all:[401, 429]</td>
+                        <td style="text-align: center;">all:[500]</td>
                         <td style="text-align: center;">429 after burst</td>
-                        <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">61545.1ms</td>
+                        <td style="text-align: center;"><span class="badge fail">YES</span></td>
+                        <td style="text-align: center; color: var(--text-muted);">44113.5ms</td>
                     </tr>
                     <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">95</td>
+                        <td style="text-align: center; color: var(--text-muted);">43</td>
                         <td>Hardcoded Creds</td>
                         <td><code>/api/v1/auth/signup</code></td>
                         <td style="text-align: center;"><code>POST</code></td>
-                        <td style="text-align: center;">422</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">role validated server-side</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2050.6ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1558.3ms</td>
                     </tr>
                     <tr class="test-row">
-                        <td style="text-align: center; color: var(--text-muted);">96</td>
+                        <td style="text-align: center; color: var(--text-muted);">44</td>
                         <td>Cors</td>
                         <td><code>/api/v1/slides/stats/dashboard</code></td>
                         <td style="text-align: center;"><code>GET</code></td>
-                        <td style="text-align: center;">401</td>
+                        <td style="text-align: center;">500</td>
                         <td style="text-align: center;">restricted</td>
                         <td style="text-align: center;"><span class="badge pass">NO</span></td>
-                        <td style="text-align: center; color: var(--text-muted);">2042.6ms</td>
+                        <td style="text-align: center; color: var(--text-muted);">1516.5ms</td>
                     </tr>
                 </tbody>
             </table>
