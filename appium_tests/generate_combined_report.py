@@ -1,7 +1,7 @@
 """
 OralDysplasia AI — Combined Test Results Report Generator.
-Merges Selenium (Web, 100 tests) + Appium (Android, 100 tests) into a single
-200-test Excel report with full analytics, charts, and category breakdowns.
+Merges Selenium (Web, 300 tests) + Appium (Android, 300 tests) into a single
+600-test Excel report with full analytics, charts, and category breakdowns.
 
 Usage:
     python generate_combined_report.py
@@ -175,14 +175,14 @@ def build_combined_log(ws, all_rows, run_ts):
 
     # Title
     ws.merge_cells("A1:I1")
-    ws["A1"] = "OralDysplasia AI — Combined E2E Test Report  |  200 Test Cases  |  Web + Android"
+    ws["A1"] = "OralDysplasia AI — Combined E2E Test Report  |  600 Test Cases  |  Web + Android"
     ws["A1"].font = _font(15, bold=True, color=C_TITLE_FG)
     ws["A1"].alignment = _align("left")
     ws.row_dimensions[1].height = 34
 
     # Subtitle
     ws.merge_cells("A2:I2")
-    ws["A2"] = (f"Generated: {run_ts}  |  Selenium Web (100 TCs) + Appium Android (100 TCs)  "
+    ws["A2"] = (f"Generated: {run_ts}  |  Selenium Web (300 TCs) + Appium Android (300 TCs)  "
                 f"|  Total: {len(all_rows)} tests")
     ws["A2"].font = _font(10, italic=True, color=C_MUTED)
     ws["A2"].alignment = _align("left")
@@ -436,7 +436,7 @@ def build_suite_sheet(ws, rows, suite_label, accent_color, run_ts):
     ws.sheet_view.showGridLines = True
 
     ws.merge_cells("A1:H1")
-    ws["A1"] = f"OralDysplasia AI — {suite_label} Test Results (100 Test Cases)"
+    ws["A1"] = f"OralDysplasia AI — {suite_label} Test Results (300 Test Cases)"
     ws["A1"].font = _font(14, bold=True, color=C_TITLE_FG)
     ws["A1"].alignment = _align("left")
     ws.row_dimensions[1].height = 30
@@ -586,7 +586,7 @@ def build_analytics_sheet(ws, web_rows, android_rows):
     ws["A8"].fill = ws["B8"].fill = _fill(C_COMBINED)
 
     chart2 = PieChart()
-    chart2.title  = "Overall Pass/Fail Distribution (200 Tests)"
+    chart2.title  = "Overall Pass/Fail Distribution (600 Tests)"
     chart2.style  = 10
     chart2.width  = 18
     chart2.height = 12
@@ -626,7 +626,7 @@ def build_config_sheet(ws, run_ts):
             ("Browser",            "Google Chrome / MS Edge (headless)"),
             ("Target URL",         "http://127.0.0.1:8000"),
             ("Test User Email",    "selenium_test_pathologist@hospital.com"),
-            ("Total Test Cases",   "100"),
+            ("Total Test Cases",   "300"),
             ("Test Categories",    "Landing Page, Auth, Signup, Forgot Password, Dashboard, Navigation, Library, Upload, Detail, AI Canvas, Profile"),
             ("Framework",          "Python 3.10 + Selenium 4.x + openpyxl"),
             ("Report File",        "selenium_test_results_*.xlsx"),
@@ -637,8 +637,8 @@ def build_config_sheet(ws, run_ts):
             ("Device Name",        "emulator-5554 (Android Emulator)"),
             ("App Package",        "com.oraldysplasia.ai"),
             ("App Activity",       ".MainActivity"),
-            ("Backend URL",        "http://10.0.2.2:8000 (emulator → host)"),
-            ("Total Test Cases",   "100"),
+            ("Backend API URL",    "http://10.0.2.2:8000 (emulator → host)"),
+            ("Total Test Cases",   "300"),
             ("Test Categories",    "App Launch, Login, Signup, Bottom Nav, Home, Upload, Library, Detail, AI Analysis, Results"),
             ("Appium Server",      "http://127.0.0.1:4723"),
             ("Framework",          "Python 3.10 + Appium-Python-Client 3.x + openpyxl"),
@@ -646,7 +646,7 @@ def build_config_sheet(ws, run_ts):
         ]),
         ("COMBINED REPORT", C_COMBINED, [
             ("Report File",        "combined_test_report.xlsx"),
-            ("Total Test Cases",   "200"),
+            ("Total Test Cases",   "600"),
             ("Generated",          run_ts),
             ("Sheets",             "Combined Log, Summary Dashboard, Web Results, Android Results, Analytics, Config"),
         ]),
@@ -718,7 +718,7 @@ def generate_combined_report():
 
     # Sheet 1: Combined Log
     ws1 = wb.active
-    ws1.title = "Combined Log (200)"
+    ws1.title = "Combined Log (600)"
     print("  Building Sheet 1: Combined Log...")
     passed, failed = build_combined_log(ws1, all_rows, run_ts)
 

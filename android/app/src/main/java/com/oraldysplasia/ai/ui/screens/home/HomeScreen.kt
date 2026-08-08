@@ -70,11 +70,31 @@ fun HomeScreen(
                 }
                 is HomeUiState.Error -> {
                     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                            Text(text = state.message, color = MaterialTheme.colorScheme.error)
+                        Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.padding(24.dp)) {
+                            val isAuthError = state.message.contains("token", ignoreCase = true) ||
+                                              state.message.contains("user not found", ignoreCase = true) ||
+                                              state.message.contains("unauthorized", ignoreCase = true) ||
+                                              state.message.contains("401", ignoreCase = true)
+                            Text(
+                                text = if (isAuthError) "Session expired or invalid credentials." else state.message,
+                                color = MaterialTheme.colorScheme.error,
+                                fontWeight = FontWeight.Bold
+                            )
                             Spacer(modifier = Modifier.height(16.dp))
-                            Button(onClick = { viewModel.loadDashboard() }) {
-                                Text("Retry")
+                            if (isAuthError) {
+                                Button(
+                                    onClick = {
+                                        repository.tokenManager.clear()
+                                        viewModel.loadDashboard()
+                                    },
+                                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4F46E5))
+                                ) {
+                                    Text("Sign Out & Log In Again")
+                                }
+                            } else {
+                                Button(onClick = { viewModel.loadDashboard() }) {
+                                    Text("Retry")
+                                }
                             }
                         }
                     }

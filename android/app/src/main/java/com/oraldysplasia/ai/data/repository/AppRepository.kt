@@ -26,8 +26,8 @@ class AppRepository(context: Context) {
     private val slideDao = db.slideDao()
     val tokenManager = TokenManager(context)
 
-    // Base URL is 10.225.19.110 for local machine access
-    private val baseUrl = "http://10.225.19.110:8000/api/v1/"
+    // Base URL uses 127.0.0.1 via ADB reverse port forwarding
+    private val baseUrl = "http://127.0.0.1:8000/api/v1/"
 
     private val okHttpClient = OkHttpClient.Builder()
         .addInterceptor(AuthInterceptor(tokenManager))

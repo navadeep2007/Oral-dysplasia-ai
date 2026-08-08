@@ -19,11 +19,8 @@ env/
 *.sqlite
 
 # Generated reports & test output
-*.xlsx
 *.pdf
-backend/*.xlsx
 backend/*.pdf
-combined_test_report.xlsx
 
 # Uploads
 backend/uploads/*
