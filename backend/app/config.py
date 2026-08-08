@@ -17,8 +17,8 @@ if not os.path.exists(_env_path) and not os.environ.get("VERCEL"):
         # Default local database is a safe SQLite file, not hardcoding MySQL credentials
         f.write("DATABASE_URL=sqlite+aiosqlite:///oraldysplasia.db\n")
 
-# Load .env variables into environment if not already set
-if os.path.exists(_env_path):
+# Load .env variables into environment if not already set (except on Vercel platform)
+if os.path.exists(_env_path) and not os.environ.get("VERCEL"):
     with open(_env_path, "r", encoding="utf-8") as f:
         for line in f:
             line = line.strip()
@@ -28,6 +28,13 @@ if os.path.exists(_env_path):
                 val = val.strip().strip("'\"")
                 if key and val and key not in os.environ:
                     os.environ[key] = val
+
+# On Vercel serverless platform, default to writable /tmp SQLite db if no production database URL is configured
+if os.environ.get("VERCEL"):
+    if not os.environ.get("DATABASE_URL") or "mysql" in os.environ.get("DATABASE_URL", ""):
+        os.environ["DATABASE_URL"] = "sqlite+aiosqlite:////tmp/oraldysplasia.db"
+    if not os.environ.get("UPLOAD_DIR"):
+        os.environ["UPLOAD_DIR"] = "/tmp/uploads"
 
 
 class Settings(BaseSettings):
