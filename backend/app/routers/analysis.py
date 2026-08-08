@@ -157,6 +157,7 @@ async def submit_review(
     db.add(annotation)
     slide.current_grade = body.final_grade
     slide.status = "reviewed"
+    await db.commit()
 
     return ReviewResponse(
         status="Review submitted",

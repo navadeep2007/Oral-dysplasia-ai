@@ -36,7 +36,7 @@ async def signup(body: SignUpRequest, db: AsyncSession = Depends(get_db)):
         institution=body.institution,
     )
     db.add(user)
-    await db.flush()
+    await db.commit()
     await db.refresh(user)
 
     token = create_token({"sub": user.email, "uid": user.id, "role": user.role})

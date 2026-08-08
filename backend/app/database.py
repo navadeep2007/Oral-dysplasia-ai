@@ -75,6 +75,9 @@ def _ensure_db_exists():
 # Retrieve connection settings synchronously
 _url, _connect_args = _ensure_db_exists()
 
+from sqlalchemy import event
+from sqlalchemy.engine import Engine
+
 engine = create_async_engine(
     _url,
     connect_args=_connect_args,
@@ -82,6 +85,14 @@ engine = create_async_engine(
     pool_pre_ping=False,
     pool_recycle=300,
 )
+
+@event.listens_for(Engine, "connect")
+def _set_sqlite_pragma(dbapi_connection, connection_record):
+    if "sqlite" in _url:
+        cursor = dbapi_connection.cursor()
+        cursor.execute("PRAGMA journal_mode=WAL")
+        cursor.execute("PRAGMA synchronous=NORMAL")
+        cursor.close()
 
 # ── Session factory ─────────────────────────────────────────────────
 AsyncSessionLocal = sessionmaker(

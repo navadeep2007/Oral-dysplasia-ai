@@ -108,7 +108,7 @@ async def upload_slide(
         clinical_notes=clinical_notes,
     )
     db.add(slide)
-    await db.flush()
+    await db.commit()
     await db.refresh(slide)
     return _slide_to_response(slide)
 
