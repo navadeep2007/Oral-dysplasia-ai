@@ -1,0 +1,19 @@
+{
+  "name": "oral-dysplasia-ai",
+  "version": "1.0.0",
+  "description": "Oral Dysplasia AI - Web Frontend and FastAPI Backend",
+  "main": "web/index.html",
+  "scripts": {
+    "dev": "cd backend && python -m uvicorn app.main:app --reload --port 8000",
+    "dev:backend": "cd backend && python -m uvicorn app.main:app --reload --port 8000",
+    "dev:frontend": "python -m http.server 3000 --directory web",
+    "start": "cd backend && python -m uvicorn app.main:app --reload --port 8000"
+  },
+  "keywords": [
+    "oral-dysplasia-ai",
+    "fastapi",
+    "web"
+  ],
+  "author": "",
+  "license": "ISC"
+}

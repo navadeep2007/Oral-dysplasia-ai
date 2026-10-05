@@ -7,10 +7,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 2142.9,
+    "response_time_ms": 1636.2,
     "test_category": "authn_bypass",
     "note": "No token sent. Got 500.",
-    "timestamp": "2026-06-19T08:14:59.636540Z"
+    "timestamp": "2026-08-08T05:04:19.636134Z"
   },
   {
     "endpoint": "/api/v1/slides/library",
@@ -20,10 +20,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1707.9,
+    "response_time_ms": 3698.9,
     "test_category": "authn_bypass",
     "note": "No token sent. Got 500.",
-    "timestamp": "2026-06-19T08:15:01.500566Z"
+    "timestamp": "2026-08-08T05:04:23.493221Z"
   },
   {
     "endpoint": "/api/v1/slides/1",
@@ -33,10 +33,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1550.2,
+    "response_time_ms": 4677.3,
     "test_category": "authn_bypass",
     "note": "No token sent. Got 500.",
-    "timestamp": "2026-06-19T08:15:03.208443Z"
+    "timestamp": "2026-08-08T05:04:28.330077Z"
   },
   {
     "endpoint": "/api/v1/slides/stats/dashboard",
@@ -46,10 +46,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 3682.4,
+    "response_time_ms": 3163.7,
     "test_category": "authn_bypass",
     "note": "No token sent. Got 500.",
-    "timestamp": "2026-06-19T08:15:07.056302Z"
+    "timestamp": "2026-08-08T05:04:31.653916Z"
   },
   {
     "endpoint": "/api/v1/analysis/run",
@@ -59,10 +59,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 7057.6,
+    "response_time_ms": 2185.1,
     "test_category": "authn_bypass",
     "note": "No token sent. Got 500.",
-    "timestamp": "2026-06-19T08:15:14.264413Z"
+    "timestamp": "2026-08-08T05:04:34.003416Z"
   },
   {
     "endpoint": "/api/v1/analysis/1/result",
@@ -72,10 +72,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1474.5,
+    "response_time_ms": 2315.0,
     "test_category": "authn_bypass",
     "note": "No token sent. Got 500.",
-    "timestamp": "2026-06-19T08:15:15.895416Z"
+    "timestamp": "2026-08-08T05:04:36.478237Z"
   },
   {
     "endpoint": "/api/v1/analysis/1/review",
@@ -85,10 +85,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1429.6,
+    "response_time_ms": 1165.7,
     "test_category": "authn_bypass",
     "note": "No token sent. Got 500.",
-    "timestamp": "2026-06-19T08:15:17.486375Z"
+    "timestamp": "2026-08-08T05:04:37.794911Z"
   },
   {
     "endpoint": "/api/v1/reports/1/export",
@@ -98,10 +98,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1481.0,
+    "response_time_ms": 1382.3,
     "test_category": "authn_bypass",
     "note": "No token sent. Got 500.",
-    "timestamp": "2026-06-19T08:15:19.117699Z"
+    "timestamp": "2026-08-08T05:04:39.337034Z"
   },
   {
     "endpoint": "/api/v1/slides/upload",
@@ -111,10 +111,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1462.3,
+    "response_time_ms": 1764.0,
     "test_category": "authn_bypass",
     "note": "Token type: empty. Got 500.",
-    "timestamp": "2026-06-19T08:15:20.731215Z"
+    "timestamp": "2026-08-08T05:04:41.261813Z"
   },
   {
     "endpoint": "/api/v1/slides/library",
@@ -124,10 +124,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1599.9,
+    "response_time_ms": 1714.9,
     "test_category": "authn_bypass",
     "note": "Token type: empty. Got 500.",
-    "timestamp": "2026-06-19T08:15:22.434980Z"
+    "timestamp": "2026-08-08T05:04:43.081219Z"
   },
   {
     "endpoint": "/api/v1/slides/1",
@@ -137,10 +137,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1660.7,
+    "response_time_ms": 2128.7,
     "test_category": "authn_bypass",
     "note": "Token type: empty. Got 500.",
-    "timestamp": "2026-06-19T08:15:24.204179Z"
+    "timestamp": "2026-08-08T05:04:45.322196Z"
   },
   {
     "endpoint": "/api/v1/slides/stats/dashboard",
@@ -150,10 +150,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1442.9,
+    "response_time_ms": 1215.9,
     "test_category": "authn_bypass",
     "note": "Token type: empty. Got 500.",
-    "timestamp": "2026-06-19T08:15:25.759716Z"
+    "timestamp": "2026-08-08T05:04:46.657876Z"
   },
   {
     "endpoint": "/api/v1/analysis/run",
@@ -163,10 +163,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1420.6,
+    "response_time_ms": 1624.2,
     "test_category": "authn_bypass",
     "note": "Token type: empty. Got 500.",
-    "timestamp": "2026-06-19T08:15:27.292886Z"
+    "timestamp": "2026-08-08T05:04:48.383514Z"
   },
   {
     "endpoint": "/api/v1/analysis/1/result",
@@ -176,10 +176,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1434.9,
+    "response_time_ms": 2324.5,
     "test_category": "authn_bypass",
     "note": "Token type: empty. Got 500.",
-    "timestamp": "2026-06-19T08:15:28.842064Z"
+    "timestamp": "2026-08-08T05:04:50.824050Z"
   },
   {
     "endpoint": "/api/v1/analysis/1/review",
@@ -189,10 +189,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1425.0,
+    "response_time_ms": 1234.8,
     "test_category": "authn_bypass",
     "note": "Token type: empty. Got 500.",
-    "timestamp": "2026-06-19T08:15:30.376789Z"
+    "timestamp": "2026-08-08T05:04:52.161207Z"
   },
   {
     "endpoint": "/api/v1/reports/1/export",
@@ -202,10 +202,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1412.6,
+    "response_time_ms": 2385.4,
     "test_category": "authn_bypass",
     "note": "Token type: empty. Got 500.",
-    "timestamp": "2026-06-19T08:15:31.901051Z"
+    "timestamp": "2026-08-08T05:04:54.654553Z"
   },
   {
     "endpoint": "/api/v1/slides/upload",
@@ -215,10 +215,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1464.5,
+    "response_time_ms": 4053.5,
     "test_category": "authn_bypass",
     "note": "Token type: garbage. Got 500.",
-    "timestamp": "2026-06-19T08:15:33.471859Z"
+    "timestamp": "2026-08-08T05:04:58.814296Z"
   },
   {
     "endpoint": "/api/v1/slides/library",
@@ -228,10 +228,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1406.7,
+    "response_time_ms": 2129.1,
     "test_category": "authn_bypass",
     "note": "Token type: garbage. Got 500.",
-    "timestamp": "2026-06-19T08:15:34.980309Z"
+    "timestamp": "2026-08-08T05:05:01.051420Z"
   },
   {
     "endpoint": "/api/v1/slides/1",
@@ -241,10 +241,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1432.8,
+    "response_time_ms": 2094.1,
     "test_category": "authn_bypass",
     "note": "Token type: garbage. Got 500.",
-    "timestamp": "2026-06-19T08:15:36.522753Z"
+    "timestamp": "2026-08-08T05:05:03.251461Z"
   },
   {
     "endpoint": "/api/v1/slides/stats/dashboard",
@@ -254,10 +254,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1399.9,
+    "response_time_ms": 1218.1,
     "test_category": "authn_bypass",
     "note": "Token type: garbage. Got 500.",
-    "timestamp": "2026-06-19T08:15:38.031716Z"
+    "timestamp": "2026-08-08T05:05:04.578581Z"
   },
   {
     "endpoint": "/api/v1/analysis/run",
@@ -267,10 +267,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1400.1,
+    "response_time_ms": 1217.7,
     "test_category": "authn_bypass",
     "note": "Token type: garbage. Got 500.",
-    "timestamp": "2026-06-19T08:15:39.537588Z"
+    "timestamp": "2026-08-08T05:05:05.911612Z"
   },
   {
     "endpoint": "/api/v1/analysis/1/result",
@@ -280,10 +280,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1459.9,
+    "response_time_ms": 1236.6,
     "test_category": "authn_bypass",
     "note": "Token type: garbage. Got 500.",
-    "timestamp": "2026-06-19T08:15:41.108235Z"
+    "timestamp": "2026-08-08T05:05:07.249450Z"
   },
   {
     "endpoint": "/api/v1/analysis/1/review",
@@ -293,10 +293,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1485.7,
+    "response_time_ms": 1588.8,
     "test_category": "authn_bypass",
     "note": "Token type: garbage. Got 500.",
-    "timestamp": "2026-06-19T08:15:42.698176Z"
+    "timestamp": "2026-08-08T05:05:08.945931Z"
   },
   {
     "endpoint": "/api/v1/reports/1/export",
@@ -306,10 +306,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1465.5,
+    "response_time_ms": 1392.7,
     "test_category": "authn_bypass",
     "note": "Token type: garbage. Got 500.",
-    "timestamp": "2026-06-19T08:15:44.281214Z"
+    "timestamp": "2026-08-08T05:05:10.451171Z"
   },
   {
     "endpoint": "/api/v1/slides/upload",
@@ -319,10 +319,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1622.2,
+    "response_time_ms": 1237.3,
     "test_category": "authn_bypass",
     "note": "Token type: tampered_sig. Got 500.",
-    "timestamp": "2026-06-19T08:15:46.008407Z"
+    "timestamp": "2026-08-08T05:05:11.792953Z"
   },
   {
     "endpoint": "/api/v1/slides/library",
@@ -332,10 +332,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1569.8,
+    "response_time_ms": 1215.3,
     "test_category": "authn_bypass",
     "note": "Token type: tampered_sig. Got 500.",
-    "timestamp": "2026-06-19T08:15:47.684403Z"
+    "timestamp": "2026-08-08T05:05:13.111396Z"
   },
   {
     "endpoint": "/api/v1/slides/1",
@@ -345,10 +345,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1501.9,
+    "response_time_ms": 1271.0,
     "test_category": "authn_bypass",
     "note": "Token type: tampered_sig. Got 500.",
-    "timestamp": "2026-06-19T08:15:49.292557Z"
+    "timestamp": "2026-08-08T05:05:14.487299Z"
   },
   {
     "endpoint": "/api/v1/slides/stats/dashboard",
@@ -358,10 +358,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1417.1,
+    "response_time_ms": 1226.5,
     "test_category": "authn_bypass",
     "note": "Token type: tampered_sig. Got 500.",
-    "timestamp": "2026-06-19T08:15:50.817520Z"
+    "timestamp": "2026-08-08T05:05:15.833008Z"
   },
   {
     "endpoint": "/api/v1/analysis/run",
@@ -371,10 +371,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1459.3,
+    "response_time_ms": 1220.4,
     "test_category": "authn_bypass",
     "note": "Token type: tampered_sig. Got 500.",
-    "timestamp": "2026-06-19T08:15:52.391023Z"
+    "timestamp": "2026-08-08T05:05:17.171002Z"
   },
   {
     "endpoint": "/api/v1/analysis/1/result",
@@ -384,10 +384,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1449.4,
+    "response_time_ms": 1191.5,
     "test_category": "authn_bypass",
     "note": "Token type: tampered_sig. Got 500.",
-    "timestamp": "2026-06-19T08:15:53.940974Z"
+    "timestamp": "2026-08-08T05:05:18.479085Z"
   },
   {
     "endpoint": "/api/v1/analysis/1/review",
@@ -397,10 +397,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1448.3,
+    "response_time_ms": 1350.5,
     "test_category": "authn_bypass",
     "note": "Token type: tampered_sig. Got 500.",
-    "timestamp": "2026-06-19T08:15:55.499345Z"
+    "timestamp": "2026-08-08T05:05:19.938233Z"
   },
   {
     "endpoint": "/api/v1/reports/1/export",
@@ -410,10 +410,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1478.1,
+    "response_time_ms": 1198.4,
     "test_category": "authn_bypass",
     "note": "Token type: tampered_sig. Got 500.",
-    "timestamp": "2026-06-19T08:15:57.086033Z"
+    "timestamp": "2026-08-08T05:05:21.253180Z"
   },
   {
     "endpoint": "/api/v1/slides/upload",
@@ -423,10 +423,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1446.7,
+    "response_time_ms": 1230.8,
     "test_category": "authn_bypass",
     "note": "Token type: missing_bearer. Got 500.",
-    "timestamp": "2026-06-19T08:15:58.641613Z"
+    "timestamp": "2026-08-08T05:05:22.586157Z"
   },
   {
     "endpoint": "/api/v1/slides/library",
@@ -436,10 +436,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1434.0,
+    "response_time_ms": 1181.8,
     "test_category": "authn_bypass",
     "note": "Token type: missing_bearer. Got 500.",
-    "timestamp": "2026-06-19T08:16:00.181775Z"
+    "timestamp": "2026-08-08T05:05:23.870174Z"
   },
   {
     "endpoint": "/api/v1/slides/1",
@@ -449,10 +449,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1449.8,
+    "response_time_ms": 1303.9,
     "test_category": "authn_bypass",
     "note": "Token type: missing_bearer. Got 500.",
-    "timestamp": "2026-06-19T08:16:01.744928Z"
+    "timestamp": "2026-08-08T05:05:25.277228Z"
   },
   {
     "endpoint": "/api/v1/slides/stats/dashboard",
@@ -462,10 +462,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1516.0,
+    "response_time_ms": 1183.7,
     "test_category": "authn_bypass",
     "note": "Token type: missing_bearer. Got 500.",
-    "timestamp": "2026-06-19T08:16:03.362963Z"
+    "timestamp": "2026-08-08T05:05:26.565137Z"
   },
   {
     "endpoint": "/api/v1/analysis/run",
@@ -475,10 +475,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1466.3,
+    "response_time_ms": 1191.5,
     "test_category": "authn_bypass",
     "note": "Token type: missing_bearer. Got 500.",
-    "timestamp": "2026-06-19T08:16:04.936640Z"
+    "timestamp": "2026-08-08T05:05:27.861498Z"
   },
   {
     "endpoint": "/api/v1/analysis/1/result",
@@ -488,10 +488,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1475.6,
+    "response_time_ms": 1174.3,
     "test_category": "authn_bypass",
     "note": "Token type: missing_bearer. Got 500.",
-    "timestamp": "2026-06-19T08:16:06.513296Z"
+    "timestamp": "2026-08-08T05:05:29.149153Z"
   },
   {
     "endpoint": "/api/v1/analysis/1/review",
@@ -501,10 +501,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1500.2,
+    "response_time_ms": 1217.6,
     "test_category": "authn_bypass",
     "note": "Token type: missing_bearer. Got 500.",
-    "timestamp": "2026-06-19T08:16:08.121031Z"
+    "timestamp": "2026-08-08T05:05:30.470827Z"
   },
   {
     "endpoint": "/api/v1/reports/1/export",
@@ -514,10 +514,10 @@
     "expected_status": "401/403",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1487.8,
+    "response_time_ms": 1167.0,
     "test_category": "authn_bypass",
     "note": "Token type: missing_bearer. Got 500.",
-    "timestamp": "2026-06-19T08:16:09.715589Z"
+    "timestamp": "2026-08-08T05:05:31.746074Z"
   },
   {
     "endpoint": "/api/v1/auth/signup",
@@ -527,10 +527,10 @@
     "expected_status": "422",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1512.1,
+    "response_time_ms": 1196.1,
     "test_category": "authz_rbac",
     "note": "Arbitrary role rejected with 500.",
-    "timestamp": "2026-06-19T08:16:11.331460Z"
+    "timestamp": "2026-08-08T05:05:33.053844Z"
   },
   {
     "endpoint": "/api/v1/auth/login",
@@ -540,10 +540,10 @@
     "expected_status": "429 after burst",
     "finding": true,
     "severity": "MEDIUM",
-    "response_time_ms": 44113.5,
+    "response_time_ms": 39262.5,
     "test_category": "rate_limiting",
-    "note": "Sent 30 requests in 44.1s. Rate limited: False. Statuses: [500].",
-    "timestamp": "2026-06-19T08:16:55.444938Z"
+    "note": "Sent 30 requests in 39.3s. Rate limited: False. Statuses: [500].",
+    "timestamp": "2026-08-08T05:06:12.316378Z"
   },
   {
     "endpoint": "/api/v1/auth/signup",
@@ -553,10 +553,10 @@
     "expected_status": "role validated server-side",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1558.3,
+    "response_time_ms": 1196.7,
     "test_category": "hardcoded_creds",
     "note": "Signup role validation is enforced. Arbitrary roles like 'SuperAdmin' are rejected.",
-    "timestamp": "2026-06-19T08:16:57.003286Z"
+    "timestamp": "2026-08-08T05:06:13.513054Z"
   },
   {
     "endpoint": "/api/v1/slides/stats/dashboard",
@@ -566,9 +566,9 @@
     "expected_status": "restricted",
     "finding": false,
     "severity": "info",
-    "response_time_ms": 1516.5,
+    "response_time_ms": 1228.5,
     "test_category": "cors",
     "note": "CORS header: not returned.",
-    "timestamp": "2026-06-19T08:16:58.519740Z"
+    "timestamp": "2026-08-08T05:06:14.741569Z"
   }
 ]

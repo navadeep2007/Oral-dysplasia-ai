@@ -52,9 +52,55 @@ jobs:
         run: |
           python backend/run_selenium_tests.py
 
-      - name: Upload Test Results Artifact
+      - name: Upload All Test Reports Bundle
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: selenium-test-results
-          path: selenium_test_results.xlsx
+          name: all-test-reports-bundle
+          path: |
+            *.xlsx
+            appium_tests/*.xlsx
+            automated_test/*.xlsx
+            automated_test/*.csv
+            automated_test/*.html
+            backend/*.xlsx
+
+      - name: Upload Selenium Test Reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: selenium-test-reports
+          path: backend/selenium_test_results*.xlsx
+
+      - name: Upload Appium Mobile Test Reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: appium-test-reports
+          path: appium_tests/appium_test_results.xlsx
+
+      - name: Upload DAST Security & Vulnerability Reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: dast-security-reports
+          path: |
+            DAST_Security_Report.xlsx
+            automated_test/DAST_Security_Report.*
+            automated_test/DAST_*.csv
+
+      - name: Upload Load & Performance Test Reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: load-test-reports
+          path: |
+            Load_Test_Report.xlsx
+            automated_test/Load_Test_Report.xlsx
+
+      - name: Upload Combined Executive Reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: combined-test-reports
+          path: combined_test_report*.xlsx
