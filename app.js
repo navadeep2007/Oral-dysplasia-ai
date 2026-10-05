@@ -4,7 +4,9 @@
 // When hosted on GitHub Pages (no backend), enable demo mode with
 // localStorage-based simulation so registration/login/dashboard work.
 const IS_DEMO_MODE = window.location.hostname.includes("github.io");
-const API_BASE = "/api/v1";
+const API_BASE = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") && window.location.port && window.location.port !== "8000"
+    ? "http://localhost:8000/api/v1"
+    : "/api/v1";
 
 // ── Demo Mode Helpers (GitHub Pages localStorage simulation) ───────
 function _demoGetUsers() {
